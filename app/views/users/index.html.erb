@@ -1,0 +1,29 @@
+<div class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h1 style="margin: 20px 0;">ユーザー一覧</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+	     		<table class="table table-striped">
+					<thead></thead>
+				<tbody>
+					<% @users.each do |user| %>
+						<tr>
+						<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+						<td><%= link_to user.name, user_path(user.id) %></td>
+						<td><%= link_to "ユーザー削除", user_path(user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
+					    </tr>
+					<% end %>
+				</tbody>
+				</table>
+		    </div>
+		</div>
+	</div>
+	<%= paginate @users %>
+</div>
+

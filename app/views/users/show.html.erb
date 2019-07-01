@@ -1,0 +1,92 @@
+<div class="container">
+	<% if flash[:notice] == "Signed in successfully." %>
+		<% flash[:notice] = "ようこそliefeへ。"%>
+	<% end %>
+	<% if flash[:notice] == "Welcome! You have signed up successfully." %>
+		<% flash[:notice] = "ようこそliefeへ。" %>
+	<% end %>
+	<% if flash[:notice] == "Signed out successfully." %>
+		<% flash[:notice] = "" %>
+	<% end %>
+	<%= flash[:notice] %>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+				<h1 style="margin: 20px 0;">マイページ</h1>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-6">
+			<div class="d-flex justify-content-center" style="margin-right: 30px;">
+				<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+			</div>
+		</div>
+		<div class="col-6">
+			<div class="d-flex justify-content-center">
+				<table>
+					<thead></thead>
+					<tbody style="border-top: 1px solid; border-bottom: 1px solid;">
+						<tr>
+							<td style = "padding: 10px 14px; font-size: 22px;">ペンネーム</td>
+							<td></td>
+							<td style = "padding: 10px 14px; font-size: 22px;"><%= @user.name %></td>
+							<td>
+								<% if user_signed_in? %>
+									<% if @user.id == current_user.id %>
+									<%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "btn btn-default" %>
+									<% end %>
+									<% if current_user.admin_flag == 1  %>
+									<%= link_to "ユーザー削除", user_path(@user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
+									<% end %>
+								<% end %>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-start">
+				<h2> 小説一覧</h2>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+	     		<table class="table table-striped">
+					<thead>
+						<th></th>
+						<th></th>
+						<th></th>
+						<th></th>
+					</thead>
+				<tbody>
+					<% @stories.each do |story| %>
+						<tr>
+						<td><%= link_to story.title,story_path(story.id) %></td>
+						<td><%= story.category %></td>
+						<% if user_signed_in? %>
+							<% if @user.id == current_user.id %>
+								<td><%= link_to "編集", edit_story_path(story.id), class: "btn btn-default" %></td>
+								<td><%= link_to "削除",story_path(story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
+							<% end %>
+						<% end %>
+					    </tr>
+					<% end %>
+				</tbody>
+				</table>
+		    </div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<div class="d-flex justify-content-start">
+				<h2>お気に入り小説</h2>
+			</div>
+		</div>
+	</div>
+</div>

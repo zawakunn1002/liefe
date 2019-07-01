@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Liefe</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <!-- font-awesome導入 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <!--header部分 -->
+  <body>
+
+  <div class="container">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-sky">
+        <div class="navbar-brand collapse navbar-collapse justify-content-start">
+            <h1>liefe</h1>
+        </div>
+        <div class="collapse navbar-collapse justify-content-end">
+          <ul class="navbar-nav">
+            <% if user_signed_in? %>
+              <% if current_user.admin_flag == 1  %>
+                <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-header" %>
+                <%= link_to "ユーザー一覧", users_path, class: "btn btn-header" %>
+                <%= link_to "投稿する", new_story_path, class: "btn btn-header" %>
+                <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
+                <%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "btn btn-header" %>
+              <% else %>
+                <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-header" %>
+                <%= link_to "投稿する", new_story_path, class: "btn btn-header" %>
+                <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
+                <%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "btn btn-header" %>
+              <% end %>
+            <% else %>
+                <%= link_to "トップページ",root_path, class: "btn btn-header"  %>
+                <%= link_to "liefeとは",about_path, class: "btn btn-header" %>
+                <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
+                <%= link_to "会員登録",new_user_registration_path, class: "btn btn-header" %>
+                <%= link_to "ログイン",new_user_session_path, class: "btn btn-header" %>
+            <% end %>
+          </ul>
+        </div>
+    </nav>
+  </div>
+      <%= yield %>
+  </body>
+  <footer class="container">
+    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-sky">
+      <div class="collapse navbar-collapse justify-content-end">
+        <h1>liefe</h1>
+      </div>
+    </nav>
+  </footer>
+</html>

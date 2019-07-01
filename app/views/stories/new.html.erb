@@ -1,0 +1,44 @@
+
+<div class="container">
+	<div class="background">
+		<div class="row">
+			<div class="col-12">
+				<div class="d-flex justify-content-center">
+					<p class="new-title">
+						投稿画面です。
+						タイトルの書き忘れに注意しましょう
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="d-flex justify-content-center">
+					<%= form_for (@story) do |f| %>
+  						<div class="story_form">
+   				 			<div class="form-group">
+      						<%= f.label :タイトル %>
+     						 <%= f.text_area :title, class: "form-control", rows: 1 %>
+    						</div>
+
+    						<div class="form-group">
+    						<%= f.label :ジャンル %>
+    						<%= f.select :category, [["恋愛","恋愛"], ["ミステリー","ミステリー"], ["エッセイ","エッセイ"],["ファンタジー", "ファンタジー"], ["青春", "青春"], ["ノンフィクション", "ノンフィクション"],["ホラー", "ホラー"], ["歴史", "歴史"], ["その他", "その他"]], :prompt => "選択してください", class: "form-control"  %>
+    						</div>
+
+    						<div class="form-group">
+      						<%= f.label :本文 %>
+      						<%= f.text_area :short_story, class: "form-control", id: "input-text",rows: 4 %>
+      						<p id="counter">0文字</p>
+    						</div>
+
+    						<div class="form-submit">
+      						<%= f.submit "投稿する", class: "form-button" %>
+    						</div>
+  						</div>
+					<% end %>
+			    </div>
+			</div>
+		</div>
+	</div>
+</div>

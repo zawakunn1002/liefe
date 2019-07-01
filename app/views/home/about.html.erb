@@ -1,0 +1,53 @@
+<div class="container">
+	<div id="roop">
+		<div class="row">
+			<div class="col-6 offset-3">
+				<div class="d-flex justify-content-center">
+					<div class="text">
+						<h3 class="about-text-title">
+							（liefeとは）<br>
+						</h3>
+						<p class="about-text-main">
+							liefeは皆さんが考えた短編小説を投稿、閲覧することができる<br>
+							短編小説投稿、閲覧専用アプリケーションです。<br>
+							皆様のlifeの中にちょっとしたlieを取り入れて<br>
+							皆様が笑顔を与えたり受け取ったりしていただければと思います<br>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-5 offset-1">
+				<div class="d-flex justify-content-center">
+					<div class="text">
+						<h3 class="about-text-title">
+							ログインしなくても <br>
+						</h3>
+						<p class="about-text-login">
+							このアプリはログインをしなくても、投稿されている小説を読むことができます。どうぞゆっくりお楽しみくださいませ。
+							<%= link_to "小説一覧画面へ", stories_path, class: "btn btn-header" %>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="col-5">
+				<div class="d-flex justify-content-center">
+					<div class="text">
+						<h3 class="about-text-title">
+							ログインすると
+						</h3>
+						<p class="about-text-login">
+							このアプリはログインすると、小説を投稿することができます。
+							小説を書いてみたいという皆様の初めの一歩をliefeは応援します。<br>
+							またログインすると投稿されている小説をお気に入りすることができるようになり、
+							あなたのお気に入り小説を一覧で表示してくれたりと、
+							よりいっそうliefeを楽しめる工夫がされております。
+							<%= link_to "会員登録画面へ（会員登録は無料です)",new_user_registration_path, class: "btn btn-header" %>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
