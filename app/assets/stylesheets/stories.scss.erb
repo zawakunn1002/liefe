@@ -4,14 +4,27 @@
 
 #flipbook {
 	width: 80%;
-  height: 400px;
-  background-size: 100% 100%;
-  margin: 0 auto;
+  	height: 500px;
+  	background-size: 100% 100%;
+  	margin: 0 auto;
 }
 
 .box {
-background-color: rgba(255,255,150,1);
-  writing-mode: vertical-rl;
+	background-color: white;
+	border:2px solid #bbb;
+  	writing-mode: vertical-rl;
     -ms-writing-mode: tb-rl;
-  text-align: center;
+    text-orientation: upright;
+  	text-align: center;
+}
+
+.show-title {
+	position: absolute;
+  	top: 50%;
+  	left: 50%;
+  	-webkit-transform : translate(-50%,-50%);
+  	transform : translate(-50%,-50%);
+  	text-align: center;
+  	font-size: 30px;
+  	width: 0%;
 }

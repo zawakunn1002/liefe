@@ -1,25 +1,71 @@
 <div class="container">
-	<div class="row">
-		<div class="col-8 offset-2">
-			<div class="d-flex justify-content-end">
-				<div id="flipbook">
-	  				<div class="box">
-	  					<p>どうぞよろしくお願いいたします。</p>
-	  				</div>
-	  				<div class="box">
-	  					<p>では失礼いたします。
-	  						お茶、とってもおいしかったです。</p>
-	  				</div>
-	  				<div class="box">
-	  					<p>どうぞよろしくお願いいたします。</p>
-	  				</div>
-	  				<div class="box">
-	  					<p>では失礼いたします。
-	  						お茶、とってもおいしかったです。</p>
-	  				</div>
+	<div class="row" style="margin-top: 20px;">
+		<div class="col-10 offset-1">
+			<div id="flipbook">
+	  			<div class="box">
+	  				<p class="show-title"><%= @story.title %></p>
 	  			</div>
-  			</div>
+	  			<div class="box">
+	  				<%= @story.short_story %>
+	  			</div>
+	  			<div class="box">
+	  				<p>どうぞよろしくお願いいたします。</p>
+	  			</div>
+	  			<div class="box">
+	  				<p>では失礼いたしますお茶、とってもおいしかったです。
+	  				</p>
+			  		<div id="favorite_buttons_<%= @story.id %>">
+		             	<%= render partial: 'favorite', locals: { story: @story} %>
+		          	</div>
+	  			</div>
+	  		</div>
 		</div>
 	</div>
+	<div class="row">
+		<div class="col-4">
+			<div class="d-flex justify-content-start">
+				<h3 class="comment-count" style="margin:30px 0 10px 0 ;"><%= @story.story_comments.count %>件コメントがあります。</h3>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<table border="1" style="width:100%;">
+				<colgroup span="1" style="width:25%;">
+				<colgroup span="1" style="width:75%;">
+				<thead style="width:30%;">
+					<tr>
+					    <th>ニックネーム</th>
+						<th>コメント</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @story.story_comments.each do |story_comment| %>
+						<tr>
+							<td><%= story_comment.user.name %></td>
+							<td><%= story_comment.comment %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<% if user_signed_in? %>
+	<div class="row" style="margin-top: 40px;">
+		<div class="col-3">
+			<div class="d-flex justify-content-start">
+				<h3>コメント</h3>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<%= form_for [@story, @story_comment] do |f| %>
+				<%= f.text_area :comment, rows: '5', class: "form-control",placeholder:"コメントはここに"
+              %>
+            	<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+			<% end %>
+		</div>
+	</div>
+	<% end %>
 </div>
-<script src="story.js"></script>
