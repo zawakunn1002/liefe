@@ -11,12 +11,16 @@ class StoryCommentsController < ApplicationController
 	end
 
 	def destroy
+		comment = StoryComment.find(params[:story_id])
+		story = Story.find(comment.story_id)
+		comment.destroy
+		redirect_to story_path(story)
 
 	end
 
 	private
 	def story_comment_params
-      params.require(:story_comment).permit(:user_id, :short_story_id, :comment)
+      params.require(:story_comment).permit(:user_id, :story_id, :comment)
 
     end
 

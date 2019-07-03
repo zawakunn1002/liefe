@@ -13,12 +13,16 @@
           <div class="form-group">
             <%= f.label :ジャンル検索欄 %><br>
             <%= f.select :category_eq, [["恋愛","恋愛"], ["ミステリー","ミステリー"], ["エッセイ","エッセイ"],["ファンタジー", "ファンタジー"], ["青春", "青春"], ["ノンフィクション", "ノンフィクション"],["ホラー", "ホラー"], ["歴史", "歴史"], ["その他", "その他"]], :prompt => "選択してください", class: "form-control"  %>
+          </div>
+          <div class="form-group">
+            <%= f.label :作品名検索欄 %><br>
+            <%= f.text_field :title_cont, class: "form-control" %>
             <div class="actions"><%= f.submit "検索" %></div>
           </div>
         <% end %>
       </div>
     </div>
-    <div class="col-7">
+    <div class="col-6">
       <div class="d-flex justify-content-end">
         <%= link_to "全小説一覧表示", stories_path, class: "btn btn-info"%>
       </div>

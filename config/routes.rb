@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   get '/home/about' => 'home#about', as: 'about'
 
+  #usera_controllerのルーティング
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
+  #stories_controller,favorites_controller.story_comments_controllerのルーティング
   resources :stories do
   	resource :favorites, only: [:create, :destroy]
   	resource :story_comments, only: [:create, :destroy]
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
 
 end
 
+#ルーティング一覧
 =begin
 new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
              user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create

@@ -5,20 +5,32 @@
 	  			<div class="box">
 	  				<p class="show-title"><%= @story.title %></p>
 	  			</div>
+			  			<% @contents.each do |content| %>
+				  			<div class="box">
+				  				<%= simple_format(content) %>
+				  			</div>
+			  			<% end %>
 	  			<div class="box">
-	  				<%= @story.short_story %>
-	  			</div>
-	  			<div class="box">
-	  				<p>どうぞよろしくお願いいたします。</p>
-	  			</div>
-	  			<div class="box">
-	  				<p>では失礼いたしますお茶、とってもおいしかったです。
-	  				</p>
 			  		<div id="favorite_buttons_<%= @story.id %>">
 		             	<%= render partial: 'favorite', locals: { story: @story} %>
 		          	</div>
+		          	<div style="margin:170px 250px 0 0;">
+		          		<p> 作者名：<%= @story.user.name %> </p>
+		          	</div>
 	  			</div>
 	  		</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-3">
+			<% if current_user.id  == @story.user.id %>
+				<%= link_to "小説編集画面へ移動", edit_story_path(@story.id), class: "btn btn-default" %>
+			<% end %>
+			<% if user_signed_in? %>
+				<% if current_user.admin_flag == 1  %>
+					<%= link_to "小説削除", story_path(@story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 	<div class="row">
@@ -32,11 +44,13 @@
 		<div class="col-12">
 			<table border="1" style="width:100%;">
 				<colgroup span="1" style="width:25%;">
-				<colgroup span="1" style="width:75%;">
+				<colgroup span="1" style="width:67%;">
+				<colgroup span="1" style="width:8%;">
 				<thead style="width:30%;">
 					<tr>
 					    <th>ニックネーム</th>
 						<th>コメント</th>
+						<th></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -44,6 +58,11 @@
 						<tr>
 							<td><%= story_comment.user.name %></td>
 							<td><%= story_comment.comment %></td>
+							<td>
+								<% if current_user.id == story_comment.user.id %>
+									<%= link_to "コメントを削除", story_story_comments_path(story_comment.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
+								<% end %>
+							</td>
 						</tr>
 					<% end %>
 				</tbody>
@@ -69,3 +88,14 @@
 	</div>
 	<% end %>
 </div>
+
+<script>
+ $(function(){
+  	$('#flipbook').turn({
+  		elevation: 50,
+  		gradients: true,
+ 		autoCenter: false,
+ 		direction: 'rtl'
+  	});
+ });
+</script>

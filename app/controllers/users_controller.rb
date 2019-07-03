@@ -14,8 +14,8 @@ class UsersController < ApplicationController
 
   def show
   	@user =User.find(params[:id])
-    @stories = Story.where(user_id: @user.id)
-    @favorites = Favorite.where(user_id: @user.id).all
+    @stories = Story.where(user_id: @user.id).order(:id).reverse_order
+    @favorites = Favorite.where(user_id: @user.id).all.order(:id).reverse_order
   end
 
   def edit

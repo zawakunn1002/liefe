@@ -1,5 +1,6 @@
 class StoriesController < ApplicationController
 
+	#kaminariにて一ページに何件表示するか決める
 	PER = 3
 
 	def new
@@ -16,32 +17,45 @@ class StoriesController < ApplicationController
 		   redirect_to user_path(current_user.id)
 		else
 		   render "new"
+
 		end
 
 	end
 
 
 	def index
-		@stories = Story.page(params[:page]).per(PER)
+		#kaminariの書き方＋投稿を新しい順に並べるため
+		@stories = Story.page(params[:page]).per(PER).order(:id).reverse_order
 		# 検索オブジェクト
     	@search = @stories.ransack(params[:q])
     	# 検索結果
     	@result = @search.result
-    	#binding.pry
 
 	end
 
 	def show
 		@story = Story.find(params[:id])
 		@story_comment = StoryComment.new
+		@contents = @story.short_story.each_char.each_slice(200).map(&:join)
+		@user = current_user
 
 	end
 
 	def edit
+		@story = Story.find(params[:id])
 
 	end
 
 	def update
+		 @story = Story.find(params[:id])
+		 @user = current_user
+
+         if @story.update(story_params)
+      		flash[:notice] = "小説を更新しました"
+      		redirect_to user_path(@user.id)
+    	 else
+      		render 'edit'
+    	 end
 
 	end
 
