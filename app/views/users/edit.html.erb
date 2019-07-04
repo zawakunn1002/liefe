@@ -1,21 +1,23 @@
 <div class="container">
-	<div class="row">
-		<div class="col-12">
-			<div class="d-flex justify-content-center">
-				<h2> プロフィール編集</h2>
+	<div class="back-image">
+		<div class="row">
+			<div class="col-12">
+				<div class="d-flex justify-content-center">
+					<h2 style="margin-top: 20px;"> プロフィール編集</h2>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="row">
-		<div class="col-12">
-			<div class="d-flex justify-content-center">
-  	  			<%= form_for(@user) do |f| %>
-  	  				<p>ニックネーム</p>
-  	   			<%= f.text_field :name %><br>
-  	  				<p>プロフィール画像</p>
-  	  			<%= f.attachment_field :profile_image %><br>
-  	  			<%= f.submit "更新" %>
-  	  			<% end %>
+		<div class="row">
+			<div class="col-11 offset-1">
+				<div class="d-flex justify-content-center" style="line-height: 40px; margin-bottom: 30px;">
+	  	  			<%= form_for(@user) do |f| %>
+	  	  				<p>ニックネーム</p>
+	  	   			<%= f.text_field :name %><br>
+	  	  				<p>プロフィール画像</p>
+	  	  			<%= f.attachment_field :profile_image %><br>
+	  	  			<%= f.submit "更新" %>
+	  	  			<% end %>
+				</div>
 			</div>
 		</div>
 	</div>
