@@ -38,7 +38,6 @@ class StoriesController < ApplicationController
 		@story_comment = StoryComment.new
 		@contents = @story.short_story.each_char.each_slice(200).map(&:join)
 		@user = current_user
-
 	end
 
 	def edit
@@ -70,7 +69,7 @@ class StoriesController < ApplicationController
 	private
 
   	def story_params
-  	  	params.require(:story).permit(:title, :category, :short_story, user_attributes:[:id,:name])
+  	  	params.require(:story).permit(:title, :category, :short_story, :cover_image, :spine_cover_image, user_attributes:[:id,:name])
   	end
 
   	def search_params

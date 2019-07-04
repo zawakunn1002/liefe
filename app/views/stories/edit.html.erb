@@ -38,6 +38,16 @@
     						</div>
 
     						<div class="form-group">
+    							<%= f.label :表紙画像選択 %>
+    							<%= f.attachment_field :cover_image %><br>
+    						</div>
+
+    						<div class="form-group">
+    							<%= f.label :背表紙画像選択 %>
+    							<%= f.attachment_field :spine_cover_image %><br>
+    						</div>
+
+    						<div class="form-group">
       							<%= f.label :本文 %>
       							<%= f.text_area :short_story, class: "form-control", id: "textArea",cols: 110, rows: 15 %>
       							<p>
@@ -77,6 +87,25 @@
 				<div class="d-flex justify-content-start">
 					<p>２、タイトルが空欄の場合や、ジャンルを選択されていない場合は<br>
 						 投稿できない仕組みになっております。ご注意くださいませ<br>
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="d-flex justify-content-start">
+					<p>３、表紙画像、裏表紙画像の選択は必須ではありません。<br>
+						  選択しない場合は背景が白色になります。
+				    </p>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-12">
+				<div class="d-flex justify-content-start">
+					<p>４、画像はサイズによってうまく表示ができない場合があります。<br>
+						  また表紙にタイトル、作者名を載せさせていただく関係で、<br>
+						  画像に半透明の白色をかけさせていただいております。ご了承くださいませ。
 					</p>
 				</div>
 			</div>

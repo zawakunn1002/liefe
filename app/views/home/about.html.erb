@@ -50,4 +50,68 @@
 			</div>
 		</div>
 	</div>
+	<div class="row" style="margin-top: 50px;">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+        		<h2>FAQ</h2>
+    		</div>
+    	</div>
+    </div>
+    <div class="faq">
+        <ul id="faq-list">
+            <li class="faq-list-item">
+             	<h3 class="question">liefeの利用にはお金がかかりますか？</h3>
+            	<span>+</span>
+            	<div class="answer">
+              	<p>liefeでは現在すべてのサービスを無料でご提供させていただいております。</p>
+            	</div>
+          	</li>
+          	<li class="faq-list-item">
+            	<h3 class="question">投稿の仕方がわかりません。</h3>
+            	<span>+</span>
+            	<div class="answer">
+              	<p>小説を投稿するには会員登録が必要です。会員登録をすると「投稿する」という文字が現れます。
+              	クリックしていただくと入力フォームに移送しますので、そこに小説を書いていただき「投稿する」というボタンを押すと投稿されます。</p>
+           		</div>
+         	 </li>
+          	<li class="faq-list-item">
+           		 <h3 class="question">短編小説と書いてありますが、投稿する小説に文字数制限などはありますか？</h3>
+           		 <span>+</span>
+            	 <div class="answer">
+              	 <p>liefeでは1200文字以下の短編小説しか投稿することができない仕組みになっております。</p>
+             	 </div>
+            </li>
+          	<li class="faq-list-item">
+            	<h3 class="question">投稿するときに作品名を間違えてしまいました。どうすればいいですか？</h3>
+            	<span>+</span>
+            	<div class="answer">
+              	<p>liefeでは自分が投稿した小説は編集ができるような仕組みになっております。
+              	自分が投稿した小説の編集画面に進んでいただくと作品名、ジャンル、小説本文を編集することができますので、そちらの機能をご利用ください。</p>
+           		</div>
+         	 </li>
+        </ul>
+    </div>
 </div>
+
+<script>
+	$(function(){
+    	$('.faq-list-item').click(function() {
+    		var $answer = $(this).find('.answer');
+   			 if($answer.hasClass('open')) {
+      			$answer.removeClass('open');
+
+      			$answer.slideUp();
+
+     			 $(this).find('span').text('+');
+
+   				} else {
+      			$answer.addClass('open');
+
+     			$answer.slideDown();
+
+     			$(this).find('span').text('-');
+
+   				}
+ 		});
+    });
+</script>

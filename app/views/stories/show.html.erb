@@ -2,28 +2,33 @@
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-10 offset-1">
 			<div id="flipbook">
-	  			<div class="box">
-	  				<p class="show-title"><%= @story.title %></p>
+				<!-- box1は白い背景 -->
+	  			<div class="top-box1">
+	  				<!-- box2はユーザーが投稿した画像の背景 -->
+	  				<div class="top-box2">
+	  					<%= attachment_image_tag @story, :cover_image, :fill, 368, 500, fallback: "" %>
+	  				</div>
+	  				<div class="top-box3">
+			  			<p class="show-title"><%= @story.title %></p>
+			  			<p class="auther">作者名：<%= @story.user.name %></p>
+			  		</div>
 	  			</div>
-			  			<% @contents.each do |content| %>
-				  			<div class="box">
-				  				<%= simple_format(content) %>
-				  			</div>
-			  			<% end %>
-	  			<div class="box">
-			  		<div id="favorite_buttons_<%= @story.id %>">
-		             	<%= render partial: 'favorite', locals: { story: @story} %>
-		          	</div>
-		          	<div style="margin:170px 250px 0 0;">
-		          		<p> 作者名：<%= @story.user.name %> </p>
-		          	</div>
+			  	<% @contents.each do |content| %>
+				  	<div class="text-box">
+				  		<%= simple_format(content) %>
+				  	</div>
+			  	<% end %>
+	  			<div class="end-box1">
+	  				<div class="end-box2">
+	  					<%= attachment_image_tag @story, :spine_cover_image, :fill, 368, 500, fallback: "" %>
+	  				</div>
 	  			</div>
 	  		</div>
 		</div>
 	</div>
 	<div class="row">
 		<div class="col-3">
-			<% if current_user.id  == @story.user.id %>
+			<% if current_user == @story.user %>
 				<%= link_to "小説編集画面へ移動", edit_story_path(@story.id), class: "btn btn-default" %>
 			<% end %>
 			<% if user_signed_in? %>
@@ -31,6 +36,10 @@
 					<%= link_to "小説削除", story_path(@story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
 				<% end %>
 			<% end %>
+			<div id="favorite_buttons_<%= @story.id %>">
+		        <%= render partial: 'favorite', locals: { story: @story} %>
+		    </div>
+		    <p>投稿日：<%= @story.created_at.strftime("%Y") %>年<%= @story.created_at.strftime("%m") %>月<%= @story.created_at.strftime("%d") %>日</p>
 		</div>
 	</div>
 	<div class="row">
@@ -59,7 +68,7 @@
 							<td><%= story_comment.user.name %></td>
 							<td><%= story_comment.comment %></td>
 							<td>
-								<% if current_user.id == story_comment.user.id %>
+								<% if current_user == story_comment.user %>
 									<%= link_to "コメントを削除", story_story_comments_path(story_comment.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
 								<% end %>
 							</td>

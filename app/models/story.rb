@@ -7,6 +7,9 @@ class Story < ApplicationRecord
 	validates :title, presence: true, length: { maximum: 50 }
 	validates :category, presence: true
 
+	attachment :cover_image
+	attachment :spine_cover_image
+
 	def favorited_by?(user)
           favorites.where(user_id: user.id).exists?
     end
