@@ -4,6 +4,7 @@
     <title>Liefe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- font-awesome導入 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -13,10 +14,8 @@
   <body>
 
   <div class="container">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-sky">
-        <div class="navbar-brand collapse navbar-collapse justify-content-start">
-            <h1>liefe</h1>
-        </div>
+    <nav class="navbar navbar-expand-sm fixed-top navbar-dark bg-sky p-1">
+        <h1>liefe</h1>
         <div class="collapse navbar-collapse justify-content-end">
           <ul class="navbar-nav">
             <% if user_signed_in? %>
@@ -34,7 +33,7 @@
               <% end %>
             <% else %>
                 <%= link_to "トップページ",root_path, class: "btn btn-header"  %>
-                <%= link_to "liefeとは",about_path, class: "btn btn-header" %>
+                <%= link_to "初めての方へ",about_path, class: "btn btn-header" %>
                 <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
                 <%= link_to "会員登録",new_user_registration_path, class: "btn btn-header" %>
                 <%= link_to "ログイン",new_user_session_path, class: "btn btn-header" %>
@@ -46,10 +45,8 @@
       <%= yield %>
   </body>
   <footer class="container">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-sky">
-      <div class="collapse navbar-collapse justify-content-end">
+    <nav class="navbar navbar-expand-sm fixed-bottom navbar-dark bg-sky p-1">
         <h1>liefe</h1>
-      </div>
     </nav>
   </footer>
 </html>

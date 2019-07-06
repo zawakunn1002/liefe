@@ -2,23 +2,27 @@
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-10 offset-1">
 			<div id="flipbook">
-				<!-- box1は白い背景 -->
+				<!-- top-box1は白い背景 -->
 	  			<div class="top-box1">
-	  				<!-- box2はユーザーが投稿した画像の背景 -->
+	  				<!-- top-box2はユーザーが投稿した画像の背景にopacityをかけたもの -->
 	  				<div class="top-box2">
 	  					<%= attachment_image_tag @story, :cover_image, :fill, 368, 500, fallback: "" %>
 	  				</div>
+	  				<!-- top-box3はタイトル、作者名を記述 -->
 	  				<div class="top-box3">
 			  			<p class="show-title"><%= @story.title %></p>
 			  			<p class="auther">作者名：<%= @story.user.name %></p>
 			  		</div>
 	  			</div>
 			  	<% @contents.each do |content| %>
+			  		<!-- text-boxは小説本文 -->
 				  	<div class="text-box">
 				  		<%= simple_format(content) %>
 				  	</div>
 			  	<% end %>
+			  	<!-- end-box1は白い背景 -->
 	  			<div class="end-box1">
+	  				<!-- end-box2はユーザーが投稿した画像の背景にopacityをかけたもの -->
 	  				<div class="end-box2">
 	  					<%= attachment_image_tag @story, :spine_cover_image, :fill, 368, 500, fallback: "" %>
 	  				</div>

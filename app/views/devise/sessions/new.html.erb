@@ -6,6 +6,9 @@
           <div class="d-flex justify-content-center">
             <div class="log-in-back">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+            <%- flash.each do |name, msg| -%>
+            <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
+            <%- end -%>
               <h2>ログイン</h2>
               <div class="field">
                 <%= f.label :ペンネーム %><br />

@@ -1,5 +1,7 @@
 class StoriesController < ApplicationController
 
+	before_action :authenticate_user!, only: [:new,:edit]
+
 	#kaminariにて一ページに何件表示するか決める
 	PER = 3
 

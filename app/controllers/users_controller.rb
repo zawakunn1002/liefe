@@ -2,13 +2,12 @@ class UsersController < ApplicationController
 
   PER = 3
 
+  before_action :authenticate_user!, only: [:index, :edit]
+
 
   def index
     @users = User.page(params[:page]).per(PER)
     @user = current_user
-    if @user.admin_flag != 1
-      redirect_to stories_path
-    end
 
   end
 
