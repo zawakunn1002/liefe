@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container-fluid">
 	<% if flash[:notice] == "Signed in successfully." %>
 		<% flash[:notice] = "ようこそliefeへ。"%>
 	<% end %>
@@ -16,34 +16,46 @@
 	<% end %>
 	<%= flash[:notice] %>
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-12 col-xs-12">
 			<div class="d-flex justify-content-center">
 				<h1 style="margin: 20px 0;">マイページ</h1>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-6">
-			<div class="d-flex justify-content-center" style="margin-right: 30px;">
-				<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %>
+		<div class="col-lg-4 offset-lg-1 col-xs-12">
+			<div class="d-flex justify-content-center">
+				<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class: "show-image" %>
 			</div>
 		</div>
-		<div class="col-6">
+		<div class="col-lg-6 col-xs-12">
 			<div class="d-flex justify-content-center">
-				<table>
+				<table style="margin-top: 30px;">
 					<thead></thead>
-					<tbody style="border-top: 1px solid; border-bottom: 1px solid;">
+					<tbody>
 						<tr>
-							<td style = "padding: 10px 14px; font-size: 22px;">ペンネーム</td>
+							<td style="font-size: 22px;">ペンネーム</td>
 							<td></td>
-							<td style = "padding: 10px 14px; font-size: 22px;"><%= @user.name %></td>
-							<td>
-								<% if user_signed_in? %>
-									<% if @user.id == current_user.id %>
-									<%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "btn btn-default" %>
+							<td style="font-size: 22px;">　<%= @user.name %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+		<div class="col-lg-6 offset-lg-6 col-xs-12">
+			<div class="d-flex justify-content-center">
+				<table style="margin-top: 30px;">
+					<thead></thead>
+					<tbody>
+						<tr>
+							<% if user_signed_in? %>
+								<% if @user.id == current_user.id %>
+							        <td>
+									<%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "btn btn-default" %></td>
 									<% end %>
 									<% if current_user.admin_flag == 1  %>
-									<%= link_to "ユーザー削除", user_path(@user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
+									<td>
+									<%= link_to "ユーザー削除", user_path(@user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
 									<% end %>
 								<% end %>
 							</td>
@@ -54,14 +66,14 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-start">
-				<h2> 小説一覧</h2>
+				<h2 style="margin: 20px 0"> 投稿小説一覧</h2>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-center">
 	     		<table class="table table-striped">
 					<thead>
@@ -89,14 +101,14 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-start">
 				<h2>お気に入り小説</h2>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-center">
 	     		<table class="table table-striped">
 					<thead>

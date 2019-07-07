@@ -3,6 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .back-image {
-	background: image-url('profile.jpg');
+	background: image-url('user-edit.jpg');
 	background-size: cover;
+	background-position: center;
+	height: 500px;
+}
+
+@media screen and (max-width:425px) {
+	.index-image {
+		width: 75px;
+		height: 75px;
+	}
+
+	.show-image {
+		width: 75px;
+		height: 75px;
+	}
+
+	.back-image {
+		height: 100vh;
+	}
 }

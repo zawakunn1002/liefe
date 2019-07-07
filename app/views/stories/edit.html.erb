@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="background">
 		<div class="row">
-			<div class="col-12">
+			<div class="col-lg-12 col-xs-12">
 				<div class="d-flex justify-content-center">
 					<h3 class="new-title" style="margin-top: 20px;">
 						編集画面です。
@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12">
+			<div class="col-lg-12 col-xs-12">
 				<div class="d-flex justify-content-center">
 					<h4>
 						<% if @story.errors.any? %>
@@ -23,7 +23,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-12">
+			<div class="col-lg-10 offset-lg-1 col-xs-12">
 				<div class="d-flex justify-content-center">
 					<%= form_for (@story) do |f| %>
   						<div class="story_form">
@@ -57,57 +57,58 @@
 								<p id="textAttention" style="display:none; color:red;">入力文字数が多すぎます。</p>
     						</div>
 
+    						<div class="row">
+								<div class="col-12">
+									<div class="d-flex justify-content-start">
+										<h4 style="margin-top: 20px;">注意点</h4>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="d-flex justify-content-start">
+										<p>１、このアプリケーションは1200字以内の短編小説専用のものです。
+						  				文字数が1200文字を超える場合、投稿することができなくなっています。
+						  				ご注意くださいませ。
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="d-flex justify-content-start">
+										<p>２、タイトルが空欄の場合や、ジャンルを選択されていない場合は
+										 投稿できない仕組みになっております。ご注意くださいませ
+										</p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="d-flex justify-content-start">
+									<p>３、表紙画像、裏表紙画像の選択は必須ではありません。
+						 			 選択しない場合は背景が白色になります。
+				    				</p>
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-12">
+									<div class="d-flex justify-content-start">
+										<p>４、画像はサイズによってうまく表示ができない場合があります。
+						  				また表紙にタイトル、作者名を載せさせていただく関係で、
+						  				画像に半透明の白色をかけさせていただいております。ご了承くださいませ。
+										</p>
+									</div>
+								</div>
+							</div>
+
     						<div class="form-submit">
       							<%= f.submit "更新する", class: "form-button" %>
     						</div>
   						</div>
 					<% end %>
 			    </div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12">
-				<div class="d-flex justify-content-start">
-					<h4 style="margin-top: 20px;">注意点</h4>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12">
-				<div class="d-flex justify-content-start">
-					<p>１、このアプリケーションは1200字以内の短編小説専用のものです。<br>
-						  文字数が1200文字を超える場合、投稿することができなくなっています。<br>
-						  ご注意くださいませ。
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12">
-				<div class="d-flex justify-content-start">
-					<p>２、タイトルが空欄の場合や、ジャンルを選択されていない場合は<br>
-						 投稿できない仕組みになっております。ご注意くださいませ<br>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12">
-				<div class="d-flex justify-content-start">
-					<p>３、表紙画像、裏表紙画像の選択は必須ではありません。<br>
-						  選択しない場合は背景が白色になります。
-				    </p>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col-12">
-				<div class="d-flex justify-content-start">
-					<p>４、画像はサイズによってうまく表示ができない場合があります。<br>
-						  また表紙にタイトル、作者名を載せさせていただく関係で、<br>
-						  画像に半透明の白色をかけさせていただいております。ご了承くださいませ。
-					</p>
-				</div>
 			</div>
 		</div>
 	</div>

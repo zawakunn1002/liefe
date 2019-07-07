@@ -1,13 +1,13 @@
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-center">
 				<h1 style="margin: 20px 0;">ユーザー一覧</h1>
 			</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-12">
+		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-center">
 	     		<table class="table table-striped">
 					<thead>
@@ -18,7 +18,8 @@
 				<tbody>
 					<% @users.each do |user| %>
 						<tr>
-						<td><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></td>
+						<td
+						><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class: "index-image" %></td>
 						<td><%= link_to user.name, user_path(user.id) %></td>
 						<td><%= link_to "ユーザー削除", user_path(user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
 					    </tr>

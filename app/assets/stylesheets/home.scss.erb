@@ -88,36 +88,6 @@
   padding: 20px 10px;
 }
 
-
-
-.sign-up-image {
-  background: image-url('sign-up.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-}
-
-.sign-up-back {
-  margin: 80px auto;
-  padding: 30px;
-  border-radius: 20px;
-  background-color: rgba(255,255,255,0.8);
-}
-
-.log-in-image {
-  background: image-url('log-in.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-}
-
-.log-in-back {
-  margin: 85px auto;
-  padding: 30px;
-  border-radius: 20px;
-  background-color: rgba(255,255,255,0.7);
-}
-
 .faq {
   margin-bottom: 80px;
 }
@@ -157,34 +127,6 @@
   margin-bottom: 15px;
 }
 
-@media screen and (max-width:425px) {
-  .top-image {
-    background-size: cover;
-    height: 350px;
-}
-
-.top {
-    display: none;
-}
-
-#roop {
-    width: 100%;
-    background: image-url('photo12.jpg') repeat-x;
-    background-position: 0 0;
-    -webkit-animation: bgroop 30s linear infinite;
-    animation: bgroop 40s linear infinite;
-}
-
-.text {
-  margin: 20px;
-}
-
-
-.about-text-login {
-  -ms-writing-mode: tb-rl;
-  padding: 20px 10px;
-}
-
 
 
 .sign-up-image {
@@ -215,43 +157,45 @@
   background-color: rgba(255,255,255,0.7);
 }
 
+@media screen and (max-width:425px) {
+  .top-image {
+    background-size: cover;
+    height: 100vh;
+}
+
+.top {
+  margin: 150px 50px 0 20px;
+}
+
+.top-title {
+  display: none;
+}
+
+a.btn-circle-fishy{
+  display: block;
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  margin: 5px;
+}
+
+.text {
+  width: 290px;
+}
 .faq {
   margin: 0 auto 80px auto;
 }
 
 #faq-list {
   width: 90%;
-  margin: 0 auto;
-  padding: 0;
-  list-style: none;
 }
 
-/*アコーディオン追加 */
-.faq-list-item {
-  margin:10px;
-  border-bottom:1px solid #ccc;
-  position:relative;
-  cursor:pointer;
-  text-align: left;
+.sign-up-image{
+  height: 100vh;
 }
 
-.faq-list-item h3 {
-  font-size: 14px;
-}
-
-.faq-list-item span {
-  position:absolute;
-  top:0;
-  right:5px;
-  color:#ccc;
-  font-size:13px;
-}
-
-.answer {
-  font-size: 12px;
-  display: none;
-  padding: 5px 0px;
-  margin-bottom: 15px;
-}
+.log-in-image {
+    height: 100vh;
+  }
 }
 

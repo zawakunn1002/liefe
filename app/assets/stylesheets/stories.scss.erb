@@ -9,6 +9,10 @@
   	margin: 0 auto;
 }
 
+#responsive-book {
+  display: none;
+}
+
 .top-box1 {
   background-color: white;
 }
@@ -77,4 +81,35 @@
     top: 45%;
     left:3%;
     font-size: 20px;
+}
+
+#top-btn {
+  display: none;
+}
+
+@media screen and (max-width:425px) {
+  .index-image {
+    width: 75px;
+    height: 75px;
+  }
+
+  #flipbook {
+    display: none;
+  }
+
+  #responsive-book {
+    display: block;
+  }
+  .responsive-title {
+    text-align: center;
+  }
+  .responsive-name {
+    text-align: right;
+  }
+
+  #top-btn {
+    display: block;
+    margin-top: 6px;
+
+  }
 }

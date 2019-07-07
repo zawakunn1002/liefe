@@ -1,6 +1,7 @@
 <div class="container">
 	<div class="row" style="margin-top: 20px;">
 		<div class="col-10 offset-1">
+			<!-- pc時に呼び出される -->
 			<div id="flipbook">
 				<!-- top-box1は白い背景 -->
 	  			<div class="top-box1">
@@ -28,10 +29,20 @@
 	  				</div>
 	  			</div>
 	  		</div>
+	  		<!-- レスポンシブ時に呼び出される -->
+	  		<div id ="responsive-book">
+	  			<h6 class="responsive-title">
+	  				<%= @story.title %><br>
+	  			</h6>
+	  			<%= simple_format(@story.short_story) %>
+	  			<h6 class="responsive-name">
+	  				<%= @story.user.name %>
+	  			</h6>
+	  		</div>
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-3">
+		<div class="col-lg-3 col-xs-3">
 			<% if current_user == @story.user %>
 				<%= link_to "小説編集画面へ移動", edit_story_path(@story.id), class: "btn btn-default" %>
 			<% end %>
@@ -47,7 +58,7 @@
 		</div>
 	</div>
 	<div class="row">
-		<div class="col-4">
+		<div class="col-lg-4 col-xs-12">
 			<div class="d-flex justify-content-start">
 				<h3 class="comment-count" style="margin:30px 0 10px 0 ;"><%= @story.story_comments.count %>件コメントがあります。</h3>
 			</div>
@@ -84,13 +95,13 @@
 	</div>
 	<% if user_signed_in? %>
 	<div class="row" style="margin-top: 40px;">
-		<div class="col-3">
+		<div class="col-lg-3 col-xs-12">
 			<div class="d-flex justify-content-start">
-				<h3>コメント</h3>
+				<h3>コメント入力欄</h3>
 			</div>
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" style="margin-bottom: 20px;">
 		<div class="col-12">
 			<%= form_for [@story, @story_comment] do |f| %>
 				<%= f.text_area :comment, rows: '5', class: "form-control",placeholder:"コメントはここに"
@@ -100,6 +111,14 @@
 		</div>
 	</div>
 	<% end %>
+	<div class="row">
+		<div class="col-6">
+			<%= link_to "小説一覧へ戻る", stories_path, class: "btn btn-default" %>
+		</div>
+		<div class="col-6">
+			<span id="top-btn">ページトップへ戻る</span>
+		</div>
+	</div>
 </div>
 
 <script>
@@ -110,5 +129,11 @@
  		autoCenter: false,
  		direction: 'rtl'
   	});
+  	$('#top-btn').click(function(){
+
+  	$('html, body').animate({
+  		'scrollTop': 0
+  		}, 1500)
+	});
  });
 </script>
