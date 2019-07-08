@@ -32,6 +32,8 @@ class StoriesController < ApplicationController
     	@search = @stories.ransack(params[:q])
     	# 検索結果
     	@result = @search.result
+    	# お気に入り小説
+    	@all_ranks = Story.find(Favorite.group(:story_id).order('count(story_id) desc').limit(3).pluck(:story_id))
 
 	end
 

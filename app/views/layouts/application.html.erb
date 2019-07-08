@@ -17,11 +17,11 @@
 
   </head>
   <!--header部分 -->
-  <body class="drawer drawer--right">
-  <header>
+  <body>
+  <header class="drawer drawer--right">
     <div class="container-fluid">
-      <h1 class="header-title">liefe</h1>
-      <button type="button" class="drawer-toggle drawer-hamburger">
+      <%= image_tag("rogo.jpg") %>
+      <button type="button" class="drawer-toggle drawer-hamburger" >
         <span class="sr-only">toggle navigation</span>
         <span class="drawer-hamburger-icon"></span>
       </button>
@@ -53,12 +53,26 @@
   </header>
   <script>
   $(function() {
-        $('.drawer').drawer();
+      $('.drawer').drawer();
     });
   </script>
-      <%= yield %>
+        <%= yield %>
   </body>
-    <nav class="navbar navbar-expand-sm navbar-dark bg-sky p-1">
-        <h1>liefe</h1>
-    </nav>
+    <footer>
+      <div id = "footer-character">
+        <span class="a">小</span>
+        <span class="b">説</span>
+        <span class="c">の</span>
+        <span class="d">世</span>
+        <span class="e">界</span>
+        <span class="f">へ</span>
+        <span class="g">よ</span>
+        <span class="h">う</span>
+        <span class="i">こ</span>
+        <span class="j">そ</span>
+      </div>
+      <div class="rogo">
+        <%= image_tag('rogo.jpg') %>
+      </div>
+    </footer>
 </html>

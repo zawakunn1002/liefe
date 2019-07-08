@@ -8,12 +8,6 @@
 	<% if flash[:notice] == "Signed out successfully." %>
 		<% flash[:notice] = "" %>
 	<% end %>
-	<% if flash[:notice] == "translation missing: ja.devise.sessions.user.signed_in" %>
-		<% flash[:notice] = "ようこそliefeへ" %>
-	<% end %>
-	<% if flash[:notice] == "translation missing: ja.devise.sessions.user.signed_out" %>
-		<% flash[:notice] = "" %>
-	<% end %>
 	<%= flash[:notice] %>
 	<div class="row">
 		<div class="col-lg-12 col-xs-12">

@@ -22,14 +22,15 @@
 
  header {
  	background-color :rgb(198,230,255);
- 	height: 64px;
+ 	height: 90px;
  	text-align: left;
+ 	position: relative;
  }
 
- .header-title {
- 	line-height: 64px;
+ header img {
+ 	width: 150px;
+ 	height: 90px;
  }
-
 .navbar-nav a {
   cursor: pointer;
 }
@@ -58,4 +59,29 @@
 
 .btn-about {
 	color: black;
+}
+
+footer {
+	background-color :rgb(198,230,255);
+ 	height: 90px;
+ 	position: relative;
+}
+
+footer img {
+ 	width: 150px;
+ 	height: 90px;
+ }
+
+#footer-character {
+	text-align: center;
+	line-height: 90px;
+	font-size: 20px;
+	height: 30px;
+	width: 100%;
+}
+
+.rogo {
+	position: absolute;
+	right: 18px;
+	bottom: 2px;
 }
