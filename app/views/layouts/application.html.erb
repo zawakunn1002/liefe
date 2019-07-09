@@ -9,37 +9,41 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+    <!-- drawer.jsの導入 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
 
   </head>
-  <!--header部分 -->
   <body>
-  <header class="drawer drawer--right">
-    <div class="container-fluid">
-      <%= image_tag("rogo.jpg") %>
-      <button type="button" class="drawer-toggle drawer-hamburger" >
-        <span class="sr-only">toggle navigation</span>
-        <span class="drawer-hamburger-icon"></span>
-      </button>
-      <nav class="drawer-nav" style="background-color: rgba(0,0,0,0.5)">
-        <ul class="drawer-manu">
+  <!--header部分 -->
+    <header class="drawer drawer--right">
+      <div class="container-fluid">
+        <%= image_tag("rogo.jpg") %>
+        <button type="button" class="drawer-toggle drawer-hamburger" >
+          <span class="sr-only">toggle navigation</span>
+          <span class="drawer-hamburger-icon"></span>
+        </button>
+        <nav class="drawer-nav" style="background-color: rgba(0,0,0,0.5)">
+          <ul class="drawer-manu">
+            <!--ユーザーがサインインしているかで条件分岐 -->
             <% if user_signed_in? %>
+              <!-- サインインしているユーザーが管理者かで条件分岐 -->
               <% if current_user.admin_flag == 1  %>
                 <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-header" %>
                 <%= link_to "ユーザー一覧", users_path, class: "btn btn-header" %>
                 <%= link_to "投稿する", new_story_path, class: "btn btn-header" %>
                 <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
                 <%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "btn btn-header" %>
+              <!-- 管理者じゃない場合 -->
               <% else %>
                 <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-header" %>
                 <%= link_to "投稿する", new_story_path, class: "btn btn-header" %>
                 <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
                 <%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "btn btn-header" %>
               <% end %>
+            <!-- サインインしていない場合 -->
             <% else %>
                 <%= link_to "トップページ",root_path, class: "btn btn-header"  %>
                 <%= link_to "初めての方へ",about_path, class: "btn btn-header" %>
@@ -47,17 +51,20 @@
                 <%= link_to "会員登録",new_user_registration_path, class: "btn btn-header" %>
                 <%= link_to "ログイン",new_user_session_path, class: "btn btn-header" %>
             <% end %>
-        </ul>
-      </nav>
-    </div>
-  </header>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
   <script>
   $(function() {
       $('.drawer').drawer();
     });
   </script>
         <%= yield %>
+
   </body>
+    <!-- footer部分 -->
     <footer>
       <div id = "footer-character">
         <span class="a">小</span>

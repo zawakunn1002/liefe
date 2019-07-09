@@ -1,6 +1,7 @@
+<!-- ユーザーがログインしているかで条件分岐 -->
 <% if user_signed_in? %>
+    <!-- ログインしているユーザーがお気に入りしたかどうかで分岐 -->
     <% if story.favorited_by?(current_user) %>
-     <!-- ログインしているユーザーがファボしたかどうかで分岐 -->
         <p><span>お気に入り解除: </span><%=link_to story.favorites.count, story_favorites_path(story.id), method: :delete, remote: true %>
         	<i class="fa fa-star" aria-hidden="true" style="color: rgb(255,255,0);"></i>
         </p>

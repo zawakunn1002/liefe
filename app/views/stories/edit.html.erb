@@ -28,26 +28,31 @@
 					<%= form_for (@story) do |f| %>
   						<div class="story_form">
    				 			<div class="form-group">
+   				 				<!-- タイトルの入力フォーム -->
       							<%= f.label :タイトル %>
      						 	<%= f.text_area :title, class: "form-control", rows: 1 %>
     						</div>
 
     						<div class="form-group">
+    							<!--ジャンルの選択フォーム -->
     							<%= f.label :ジャンル %>
     							<%= f.select :category, [["恋愛","恋愛"], ["ミステリー","ミステリー"], ["エッセイ","エッセイ"],["ファンタジー", "ファンタジー"], ["青春", "青春"], ["ノンフィクション", "ノンフィクション"],["ホラー", "ホラー"], ["歴史", "歴史"], ["その他", "その他"]], :prompt => "選択してください", class: "form-control"  %>
     						</div>
 
     						<div class="form-group">
+    							<!--本の表紙の選択フォーム -->
     							<%= f.label :表紙画像選択 %>
     							<%= f.attachment_field :cover_image %><br>
     						</div>
 
     						<div class="form-group">
+    							<!-- 本の背表紙の選択フォーム -->
     							<%= f.label :背表紙画像選択 %>
     							<%= f.attachment_field :spine_cover_image %><br>
     						</div>
 
     						<div class="form-group">
+    							<!-- 小説本文の入力フォーム -->
       							<%= f.label :本文 %>
       							<%= f.text_area :short_story, class: "form-control", id: "textArea",cols: 110, rows: 15 %>
       							<p>

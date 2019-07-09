@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 
+  #1ページあたりに表示する小説の数指定
   PER = 3
 
   before_action :authenticate_user!, only: [:index, :edit]
 
 
   def index
+    #kaminariのページネーション
     @users = User.page(params[:page]).per(PER)
     @user = current_user
 
@@ -13,7 +15,9 @@ class UsersController < ApplicationController
 
   def show
   	@user =User.find(params[:id])
+    #投稿小説を新しい順番に並び替えるため(.order(:id).reverse_order)
     @stories = Story.where(user_id: @user.id).order(:id).reverse_order
+    #お気に入りした小説を新しい順番に並び替えるため。(.order(:id).reverse_order)
     @favorites = Favorite.where(user_id: @user.id).all.order(:id).reverse_order
   end
 

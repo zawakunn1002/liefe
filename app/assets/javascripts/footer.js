@@ -1,3 +1,4 @@
+
 $(function(){
     $(document).on('turbolinks:load', function(){
     	var w = $(window).width();

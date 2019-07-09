@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   get '/home/about' => 'home#about', as: 'about'
 
-  #usera_controllerのルーティング
+  #users_controllerのルーティング
   resources :users, only: [:index, :show, :edit, :update, :destroy]
 
   #stories_controller,favorites_controller.story_comments_controllerのルーティング
