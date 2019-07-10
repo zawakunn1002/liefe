@@ -85,3 +85,9 @@ footer img {
 	right: 18px;
 	bottom: 2px;
 }
+
+@media screen and (max-width:425px) {
+	#footer-character {
+		display: none;
+	}
+}
