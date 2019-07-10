@@ -2,7 +2,7 @@
 $(function(){
     $(document).on('turbolinks:load', function(){
     	var w = $(window).width();
-    	var x = 769;
+    	var x = 1025;
     		if (w >= x) {
       		$('#footer-character').hover(
       			function() {
