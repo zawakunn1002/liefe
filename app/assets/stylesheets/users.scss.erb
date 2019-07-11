@@ -2,13 +2,57 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.back-image {
+
+.edit-image {
 	background: image-url('user-edit.jpg');
 	background-size: cover;
 	background-position: center;
-	height: 500px;
+	height: 100vh;
 }
 
+.edit-title {
+	margin: 60px 0 30px 0;
+}
+
+.edit-form {
+	line-height: 50px;
+	margin-bottom: 30px;
+}
+
+
+@media screen and (max-width:1024px) {
+}
+
+@media screen and (max-width:812px) {
+	.edit-title {
+		margin: 25px 0 10px 0;
+	}
+
+	.edit-form {
+		line-height: 40px;
+	}
+}
+
+@media screen and (max-width:768px) {
+	.edit-title {
+		margin: 200px 0 30px 0;
+	}
+}
+
+@media screen and (max-width:736px) {
+	.edit-title {
+		margin: 25px 0 10px 0;
+	}
+}
+
+@media screen and (max-width: 588px) {
+	.edit-title {
+		margin: 20px 0 10px 0;
+	}
+	.edit-form {
+		line-height: 30px;
+	}
+}
 @media screen and (max-width:425px) {
 	.index-image {
 		width: 75px;
@@ -23,4 +67,13 @@
 	.back-image {
 		height: 100vh;
 	}
+
+	.edit-title {
+		margin: 150px 0 30px 0;
+	}
+
+	.edit-form {
+		line-height: 40px;
+	}
 }
+

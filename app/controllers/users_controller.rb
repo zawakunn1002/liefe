@@ -16,9 +16,9 @@ class UsersController < ApplicationController
   def show
   	@user =User.find(params[:id])
     #投稿小説を新しい順番に並び替えるため(.order(:id).reverse_order)
-    @stories = Story.where(user_id: @user.id).order(:id).reverse_order
+    @stories = @user.stories.page(params[:page]).reverse_order.per(3)
     #お気に入りした小説を新しい順番に並び替えるため。(.order(:id).reverse_order)
-    @favorites = Favorite.where(user_id: @user.id).all.order(:id).reverse_order
+    @favorites = @user.favorites.page(params[:page]).reverse_order.per(3)
   end
 
   def edit

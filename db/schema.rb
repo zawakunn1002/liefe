@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_07_04_091751) do
+ActiveRecord::Schema.define(version: 2019_07_11_103428) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2019_07_04_091751) do
     t.string "last_sign_in_ip"
     t.string "name"
     t.datetime "created_at", null: false
-    
     t.datetime "updated_at", null: false
     t.string "profile_image_id"
     t.integer "admin_flag"

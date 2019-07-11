@@ -31,6 +31,7 @@
 	  		</div>
 	  		<!-- レスポンシブ時に呼び出される -->
 	  		<div id ="responsive-book">
+	  			<div id ="responsive-book2">
 	  			<h6 class="responsive-title">
 	  				<%= @story.title %><br>
 	  			</h6>
@@ -38,6 +39,7 @@
 	  			<h6 class="responsive-name">
 	  				<%= link_to @story.user.name, user_path(@story.user.id), class: "auther-link" %>
 	  			</h6>
+	  			</div>
 	  		</div>
 		</div>
 	</div>
@@ -130,7 +132,9 @@
 			<%= link_to "小説一覧へ戻る", stories_path, class: "btn btn-default" %>
 		</div>
 		<div class="col-6">
-			<span id="top-btn">ページトップへ戻る</span>
+			<div class="d-flex justify-content-end">
+				<span id="top-btn">ページトップへ戻る</span>
+			</div>
 		</div>
 	</div>
 </div>
