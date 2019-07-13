@@ -1,39 +1,32 @@
-require 'rails_helper'
-RSpec.describe Story, type: :model do
-	before do
-        	@user = User.new
-        	@user.name = "aa"
-        	@user.email = "oooo@oooo"
-        	@user.password = "qqqqqq"
-        	@user.save!
-            @story = Story.new
-            @story.title = "田中さんの日常"
-            @story.user_id = @user.id
-            @story.short_story = "彼は言った。"
-            @story.category = "恋愛"
-            @story.save
+ require 'rails_helper'
+ RSpec.describe Story, "モデルに関するテスト", type: :model do
+    describe '実際に保存してみる' do
+        context "保存できる場合" do
+            it "user_idを入れて保存" do
+                user = create(:user)
+                p user
+                expect(build(:story, user_id: user.id)).to be_valid
+            end
         end
-	describe 'アソシエーション' do
-    	it "Userモデルに属している" do
-      		expect(@story.user).to eq @user
-    	end
-  	end
-	context "データが正しく保存される" do
-        before do
-        	@user = User.new
-        	@user.name = "aa"
-        	@user.email = "ooo@ooo"
-        	@user.password = "qqqqqq"
-        	@user.save!
-            @story = Story.new
-            @story.title = "田中さんの日常"
-            @story.user_id = @user.id
-            @story.short_story = "彼は言った。"
-            @story.category = "恋愛"
-            @story.save
-        end
-        it "全て入力してあるので保存される" do
-            expect(@story).to be_valid
+        context "保存できない場合" do
+            it "user_idを保存していない" do
+            expect(build(:story)).to_not be_valid
+            end
+            it "titleが空欄" do
+                expect(build(:story, :no_title)).to_not be_valid
+            end
+            it "short_storyが空欄" do
+                expect(build(:story, :no_short_story)).to_not be_valid
+            end
+            it "categoryが空欄" do
+                expect(build(:story, :no_category)).to_not be_valid
+            end
+            it "titleが51文字以上" do
+                expect(build(:story, :too_long_title)).to_not be_valid
+            end
+            it "short_storyが1201文字以上" do
+                expect(build(:story, :too_long_short_story)).to_not be_valid
+            end
         end
     end
-end
+ end

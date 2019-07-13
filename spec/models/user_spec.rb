@@ -1,48 +1,27 @@
 require 'rails_helper'
-RSpec.describe User, type: :model do
+RSpec.describe User,"モデルに関するテスト", type: :model do
+    describe '実際に保存してみる' do
+        context "保存できる場合" do
+          it "成功" do
+            expect(build(:user)).to be_valid
+          end
+        end
+        context "保存できない場合" do
+          it "nameが空欄" do
+            expect(build(:user, :no_name)).to_not be_valid
+          end
 
-    context "データが正しく保存される" do
-        before do
-            @user = User.new
-            @user.name = "田中"
-            @user.email = "aaa@aaa"
-            @user.password = "qqqqqq"
-            @user.save
-        end
-        it "全て入力してあるので保存される" do
-            expect(@user).to be_valid
-        end
-    end
-    context "データが正しく保存されない" do
-        before do
-            @user = User.new
-            @user.name = ""
-            @user.email = "aaa@aaa"
-            @user.password = "qqqqqq"
-            @user.save
-        end
-        it "nameが入力されていないので保存されない" do
-            expect(@user).to be_invalid
-        end
-        before do
-            @user = User.new
-            @user.name = "あああああああああああああああああああああああああああああああ"
-            @user.email = "aaa@aaa"
-            @user.password = "qqqqqq"
-            @user.save
-        end
-        it "nameが20文字を超えているので保存されない" do
-            expect(@user).to be_invalid
-        end
-        before do
-            @user = User.new
-            @user.name = "田中"
-            @user.email = ""
-            @user.password = "qqqqqq"
-            @user.save
-        end
-        it "Emailが入力されていないので保存されない" do
-            expect(@user).to be_invalid
+          it "nameが１文以下" do
+            expect(build(:user, :too_short_name)).to_not be_valid
+          end
+
+          it "nameが21文字以上" do
+            expect(build(:user, :too_long_name)).to_not be_valid
+          end
+
+          it "emailが空欄の場合" do
+            expect(build(:user, :no_email)).to_not be_valid
+          end
         end
     end
 end
