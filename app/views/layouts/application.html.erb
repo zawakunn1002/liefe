@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- font-awesome導入 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
     <!-- drawer.jsの導入 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
 
@@ -55,12 +55,6 @@
         </nav>
       </div>
     </header>
-
-  <script>
-  $(function() {
-      $('.drawer').drawer();
-    });
-  </script>
         <%= yield %>
 
   </body>

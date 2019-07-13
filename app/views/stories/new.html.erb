@@ -54,7 +54,7 @@
     						<div class="form-group">
     							<!-- 小説本文の入力フォーム -->
       							<%= f.label :本文 %>
-      							<%= f.text_area :short_story, class: "form-control", id: "textArea",cols: 110, rows: 15 %>
+      							<%= f.text_area :short_story, class: "form-control", id:"textArea",cols: 110, rows: 15 %>
       							<p>
   									<span id="textCount">0</span>文字入力しました。<br>
   									あと<span id="textLest">1200</span>文字入力できます。
@@ -89,6 +89,7 @@
 							</div>
 							<div class="row">
 								<div class="col-12">
+									<!-- 7/13治します -->
 									<div class="d-flex justify-content-start">
 									<p>３、表紙画像、裏表紙画像の選択は必須ではありません。
 						 			 選択しない場合は背景が白色になります。

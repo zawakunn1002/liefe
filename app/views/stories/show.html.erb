@@ -64,11 +64,9 @@
 		    <p>音量に注意してください</p>
 		    <p>current_user</p>
 		    <div><%= audio_tag("sound1.mp3", :autoplay => false, :controls => true, :loop => true) %>
-		 		<audio src="app/assets/audios/sound1.mp3" />
 		 	</div>
 		 	<p>涼夏</p>
 		 	<div><%= audio_tag("sound2.mp3", :autoplay => false, :controls => true, :loop => true) %>
-		 		<audio src="app/assets/audios/sound2.mp3" />
 		 	</div>
 		</div>
 	</div>
@@ -138,20 +136,13 @@
 		</div>
 	</div>
 </div>
-
 <script>
- $(function(){
-  	$('#flipbook').turn({
+  $(function(){
+  	 $('#flipbook').turn({
   		elevation: 50,
   		gradients: true,
  		autoCenter: false,
  		direction: 'rtl'
-  	});
-  	$('#top-btn').click(function(){
-
-  	$('html, body').animate({
-  		'scrollTop': 0
-  		}, 1500)
-	});
- });
+  	 });
+  });
 </script>
