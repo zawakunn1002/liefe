@@ -10,6 +10,9 @@ class UsersController < ApplicationController
     #kaminariのページネーション
     @users = User.page(params[:page]).per(PER)
     @user = current_user
+    if current_user.admin_flag != 1
+       redirect_to stories_path
+    end
 
   end
 
@@ -32,8 +35,10 @@ class UsersController < ApplicationController
      @user = User.find(params[:id])
     if @user.update(user_params)
       flash[:notice] = "プロフィール更新しました"
+      # binding.pry
       redirect_to user_path(@user.id)
     else
+      # binding.pry
       render 'edit'
     end
   end
@@ -46,6 +51,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:id, :name, :profile_image, story_attributes:[:title])
+    params.require(:user).permit(:id, :email, :name, :profile_image, story_attributes:[:title])
   end
 end

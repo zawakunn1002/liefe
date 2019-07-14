@@ -47,6 +47,9 @@ class StoriesController < ApplicationController
 
 	def edit
 		@story = Story.find(params[:id])
+		if current_user.id != @story.user.id
+		   redirect_to stories_path
+		end
 
 	end
 
