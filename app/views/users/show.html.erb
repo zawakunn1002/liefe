@@ -63,30 +63,40 @@
 	<div class="row">
 		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-center">
-		     	<table class="table table-striped">
-					<thead>
-						<th>作品名</th>
-						<th>ジャンル</th>
-						<th></th>
-						<th></th>
-					</thead>
-					<tbody>
-						<% @stories.each do |story| %>
-							<tr>
-								<td><%= link_to story.title,story_path(story.id) %></td>
-								<td><%= story.category %></td>
-									<!--ユーザーがサインインしていたら -->
-									<% if user_signed_in? %>
-										<!-- サインインしているユーザーがcurrent_userだったら -->
-										<% if @user.id == current_user.id %>
-											<td><%= link_to "編集", edit_story_path(story.id), class: "btn btn-default" %></td>
-											<td><%= link_to "削除",story_path(story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
-										<% end %>
-									<% end %>
-						   	</tr>
+				<% if @stories.blank? %>
+					<p><%= @user.name %>さんの投稿小説がありません<br>
+						 <% if user_signed_in? %>
+							<% if @user.id == current_user.id %>
+								あなたも小説を投稿してみませんか<br>
+									<%= link_to "小説投稿画面へ", new_story_path, class: "btn btn-info" %>
+							<% end %>
 						<% end %>
-					</tbody>
-				</table>
+				<% else %>
+			     	<table class="table table-striped">
+						<thead>
+							<th>作品名</th>
+							<th>ジャンル</th>
+							<th></th>
+							<th></th>
+						</thead>
+						<tbody>
+							<% @stories.each do |story| %>
+								<tr>
+									<td><%= link_to story.title,story_path(story.id) %></td>
+									<td><%= story.category %></td>
+										<!--ユーザーがサインインしていたら -->
+										<% if user_signed_in? %>
+											<!-- サインインしているユーザーがcurrent_userだったら -->
+											<% if @user.id == current_user.id %>
+												<td><%= link_to "編集", edit_story_path(story.id), class: "btn btn-default" %></td>
+												<td><%= link_to "削除",story_path(story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
+											<% end %>
+										<% end %>
+							   	</tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% end %>
 		    </div>
 		</div>
 	</div>
@@ -105,21 +115,24 @@
 	<div class="row">
 		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-center">
-	     		<table class="table table-striped">
-					<thead>
-						<th>作品名</th>
-						<th>作者名</th>
-					</thead>
-					<tbody>
-						<% @favorites.each do |favorite| %>
-							<tr>
-							<td><%= link_to favorite.story.title, story_path(favorite.story.id) %></td>
-							<td><%= link_to favorite.story.user.name, user_path(favorite.story.user.id) %></td>
-						    </tr>
-						<% end %>
-					</tbody>
-				</table>
-
+				<% if @favorites.blank? %>
+					<%= @user.name %>さんのお気に入り小説はありません
+				<% else %>
+		     		<table class="table table-striped">
+						<thead>
+							<th>作品名</th>
+							<th>作者名</th>
+						</thead>
+						<tbody>
+							<% @favorites.each do |favorite| %>
+								<tr>
+								<td><%= link_to favorite.story.title, story_path(favorite.story.id) %></td>
+								<td><%= link_to favorite.story.user.name, user_path(favorite.story.user.id) %></td>
+							    </tr>
+							<% end %>
+						</tbody>
+					</table>
+				<% end %>
 			</div>
 		</div>
 	</div>

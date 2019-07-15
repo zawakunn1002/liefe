@@ -95,6 +95,7 @@ RSpec.feature "Homeページ、サインアップ、ログイン、ログアウ�
     it "ログイン時" do
       login(@user)
       visit root_path
+      expect(page).to_not have_link "ユーザー一覧", href: users_path
       expect(page).to have_link "マイページ", href: user_path(@user)
       expect(page).to have_link "投稿する", href: new_story_path
       expect(page).to have_link "小説一覧", href: stories_path
@@ -102,6 +103,7 @@ RSpec.feature "Homeページ、サインアップ、ログイン、ログアウ�
     end
     it "ログアウト時" do
       visit root_path
+      expect(page).to_not have_link "ユーザー一覧", href: users_path
       expect(page).to have_link "トップページ", href: root_path
       expect(page).to have_link "初めての方へ", href: "/home/about"
       expect(page).to have_link "小説一覧", href: stories_path
