@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   def index
     #kaminariのページネーション
     @users = User.page(params[:page]).per(PER)
+    # 検索オブジェクト
+    @search = @users.ransack(params[:q])
+    # 検索結果
+    @result = @search.result
     @user = current_user
     if current_user.admin_flag != 1
        redirect_to stories_path
@@ -51,4 +55,9 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:id, :email, :name, :profile_image, story_attributes:[:title])
   end
+
+  def search_params
+      params.require(:q).permit!
+  end
+
 end

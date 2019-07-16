@@ -7,6 +7,23 @@
 		</div>
 	</div>
 	<div class="row">
+		<div class="col-6 offset-3">
+			<div class="form-group">
+				<%= search_form_for @search do |f| %>
+	            	<!-- ユーザーの検索欄 -->
+	           		<%= f.label :ユーザー検索欄 %><br>
+	            	<%= f.text_field :name_cont, class: "form-control" %>
+	            	<div class="actions"><%= f.submit "検索" %></div>
+	            <% end %>
+          	</div>
+        </div>
+    </div>
+    <div class="row">
+    	<div class="col-6 offset-3">
+    		<%= link_to "ユーザー一覧を再度表示", users_path, class: "btn btn-info", style: "margin: 5px 0 20px 0;"%>
+    	</div>
+    </div>
+	<div class="row">
 		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-center">
 	     		<table class="table table-striped">
@@ -16,7 +33,7 @@
 						<th></th>
 					</thead>
 				<tbody>
-					<% @users.each do |user| %>
+					<% @result.each do |user| %>
 						<tr>
 						<td
 						><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class: "index-image" %></td>
