@@ -93,7 +93,7 @@
             <!-- 検索結果一覧表示 -->
           	<% @result.each do |story| %>
           		<tr>
-            		<td><%= attachment_image_tag story.user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class: "index-image" %>
+            		<td><%= attachment_image_tag story.user, :profile_image, :fill, 100, 100, fallback: '/images/no_image.jpg', class: "index-image" %>
            			</td>
                 <td><%= link_to story.user.name, user_path(story.user.id) %></td>
 
