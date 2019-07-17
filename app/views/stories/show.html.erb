@@ -68,10 +68,10 @@
 		    <p>投稿日：<%= @story.created_at.strftime("%Y") %>年<%= @story.created_at.strftime("%m") %>月<%= @story.created_at.strftime("%d") %>日</p>
 		    <p>音量に注意してください</p>
 		    <p>current_user</p>
-		    <div><%= audio_tag("sound1.mp3", :autoplay => false, :controls => true, :loop => true) %>
+		    <div><%= audio_tag("/audios/sound1.mp3", :autoplay => false, :controls => true, :loop => true) %>
 		 	</div>
 		 	<p>涼夏</p>
-		 	<div><%= audio_tag("sound2.mp3", :autoplay => false, :controls => true, :loop => true) %>
+		 	<div><%= audio_tag("/audios/sound2.mp3", :autoplay => false, :controls => true, :loop => true) %>
 		 	</div>
 		</div>
 	</div>
