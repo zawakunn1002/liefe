@@ -8,6 +8,19 @@
 			</div>
 		</div>
 		<div class="row">
+			<div class="col-lg-12 col-xs-12">
+				<div class="d-flex justify-content-center">
+					<% if @user.errors.any? %>
+					<p style="color: red;">
+						編集に失敗しました。
+						ペンネーム、Eメールの記入漏れに
+						注意してください
+					</p>
+					<% end %>
+				</div>
+			</div>
+		</div>
+		<div class="row">
 			<div class="col-11 offset-1">
 				<div class="d-flex justify-content-center">
 					<div class="edit-form">
