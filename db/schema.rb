@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_29_103638) do
+ActiveRecord::Schema.define(version: 2019_07_17_030113) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 2019_06_29_103638) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category"
+    t.integer "favorites_count"
+    t.string "cover_image_id"
+    t.string "spine_cover_image_id"
   end
 
   create_table "story_comments", force: :cascade do |t|
@@ -51,8 +54,8 @@ ActiveRecord::Schema.define(version: 2019_06_29_103638) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "profile_image_id"
-    t.text "introduction"
     t.integer "admin_flag"
+    t.string "url"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

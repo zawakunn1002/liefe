@@ -1,3 +1,5 @@
+
+
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -20,10 +22,16 @@
  }
 
  header {
-   text-align: center;
+ 	background-color :rgb(198,230,255);
+ 	height: 90px;
+ 	text-align: left;
+ 	position: relative;
  }
 
-
+ header img {
+ 	width: 150px;
+ 	height: 90px;
+ }
 .navbar-nav a {
   cursor: pointer;
 }
@@ -37,6 +45,50 @@
 }
 
 .btn-header {
-	background-color :rgb(198,230,255);
+	color: white;
+	display: block;
+	line-height: 20px;
+}
+
+
+.btn-header:hover {
+	color: white;
+	font-size: 20px;
+	-webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+}
+
+.btn-about {
 	color: black;
+}
+
+footer {
+	background-color :rgb(198,230,255);
+ 	height: 90px;
+ 	position: relative;
+}
+
+footer img {
+ 	width: 150px;
+ 	height: 90px;
+ }
+
+#footer-character {
+	text-align: center;
+	line-height: 90px;
+	font-size: 20px;
+	height: 30px;
+	width: 100%;
+}
+
+.rogo {
+	position: absolute;
+	right: 18px;
+	bottom: 2px;
+}
+
+@media screen and (max-width:425px) {
+	#footer-character {
+		display: none;
+	}
 }

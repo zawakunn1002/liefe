@@ -5,10 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :favorites, dependent: :destroy
+  has_many :favorite_stories, through: :favorites, source: :story, dependent: :destroy
   has_many :story_comments, dependent: :destroy
   has_many :stories, dependent: :destroy
 
   attachment :profile_image
 
   validates :name, length: { in: 2..20 }
+  validates :email, presence: true
 end

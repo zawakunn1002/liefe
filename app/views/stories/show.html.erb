@@ -1,0 +1,153 @@
+<div class="container">
+	<div class="row">
+		<div class="col-6 offset-2">
+			<p class="top-text">表紙の左端をクリックしてください</p>
+		</div>
+	</div>
+	<div class="row" style="margin-top: 20px;">
+		<div class="col-10 offset-1">
+			<!-- pc時に呼び出される -->
+			<div id="flipbook">
+				<!-- top-box1は白い背景 -->
+	  			<div class="top-box1">
+	  				<!-- top-box2はユーザーが投稿した画像の背景にopacityをかけたもの -->
+	  				<div class="top-box2">
+	  					<%= attachment_image_tag @story, :cover_image, :fill, 368, 500, fallback: "" %>
+	  				</div>
+	  				<!-- top-box3はタイトル、作者名を記述 -->
+	  				<div class="top-box3">
+			  			<p class="show-title"><%= @story.title %></p>
+			  			<p class="auther">作者名：<%= link_to @story.user.name, user_path(@story.user.id), class: "auther-link" %></p>
+			  		</div>
+	  			</div>
+			  	<% @contents.each do |content| %>
+			  		<!-- text-boxは小説本文 -->
+				  	<div class="text-box">
+				  		<%= simple_format(content) %>
+				  	</div>
+			  	<% end %>
+			  	<!-- end-box1は白い背景 -->
+	  			<div class="end-box1">
+	  				<!-- end-box2はユーザーが投稿した画像の背景にopacityをかけたもの -->
+	  				<div class="end-box2">
+	  					<%= attachment_image_tag @story, :spine_cover_image, :fill, 368, 500, fallback: "" %>
+	  				</div>
+	  			</div>
+	  		</div>
+	  		<!-- レスポンシブ時に呼び出される -->
+	  		<div id ="responsive-book">
+	  			<div id ="responsive-book2">
+	  			<h6 class="responsive-title">
+	  				<%= @story.title %><br>
+	  			</h6>
+	  			<%= simple_format(@story.short_story) %>
+	  			<h6 class="responsive-name">
+	  				<%= link_to @story.user.name, user_path(@story.user.id), class: "auther-link" %>
+	  			</h6>
+	  			</div>
+	  		</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-3 col-xs-3">
+			<!-- current_userが小説の作者と同じなら -->
+			<% if current_user == @story.user %>
+				<%= link_to "小説編集画面へ移動", edit_story_path(@story.id), class: "btn btn-default" %>
+			<% end %>
+			<!-- ユーザーがサインインしているかで条件分岐 -->
+			<% if user_signed_in? %>
+				<!-- current_userが管理者だったら -->
+				<% if current_user.admin_flag == 1  %>
+					<%= link_to "小説削除", story_path(@story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
+				<% end %>
+			<% end %>
+			<div id="favorite_buttons_<%= @story.id %>">
+		        <%= render partial: 'favorite', locals: { story: @story} %>
+		    </div>
+		    <!--　投稿日の年、月、日で表示 -->
+		    <p>投稿日：<%= @story.created_at.strftime("%Y") %>年<%= @story.created_at.strftime("%m") %>月<%= @story.created_at.strftime("%d") %>日</p>
+		    <p>音量に注意してください</p>
+		    <p>current_user</p>
+		    <div><%= audio_tag("sound1.mp3", :autoplay => false, :controls => true, :loop => true) %>
+		 	</div>
+		 	<p>涼夏</p>
+		 	<div><%= audio_tag("sound2.mp3", :autoplay => false, :controls => true, :loop => true) %>
+		 	</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-4 col-xs-12">
+			<div class="d-flex justify-content-start">
+				<h3 class="comment-count" style="margin:30px 0 10px 0 ;"><%= @story.story_comments.count %>件コメントがあります。</h3>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<table border="1" style="width:100%;">
+				<colgroup span="1" style="width:25%;">
+				<colgroup span="1" style="width:67%;">
+				<colgroup span="1" style="width:8%;">
+				<thead style="width:30%;">
+					<tr>
+					    <th>ニックネーム</th>
+						<th>コメント</th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @story.story_comments.each do |story_comment| %>
+						<tr>
+							<td><%= story_comment.user.name %></td>
+							<td><%= story_comment.comment %></td>
+							<td>
+								<!-- current_userがコメントをしたユーザーなら -->
+								<% if current_user == story_comment.user %>
+									<%= link_to "コメントを削除", story_story_comments_path(story_comment.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
+								<% end %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+	<!-- ユーザーがサインインしているかで条件分岐 -->
+	<% if user_signed_in? %>
+		<div class="row" style="margin-top: 40px;">
+			<div class="col-lg-3 col-xs-12">
+				<div class="d-flex justify-content-start">
+					<h3>コメント入力欄</h3>
+				</div>
+			</div>
+		</div>
+		<div class="row" style="margin-bottom: 20px;">
+			<div class="col-12">
+				<%= form_for [@story, @story_comment] do |f| %>
+					<%= f.text_area :comment, rows: '5', class: "form-control",placeholder:"コメントはここに" %>
+            		<%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+				<% end %>
+			</div>
+		</div>
+	<% end %>
+	<div class="row">
+		<div class="col-6">
+			<%= link_to "小説一覧へ戻る", stories_path, class: "btn btn-default" %>
+		</div>
+		<div class="col-6">
+			<div class="d-flex justify-content-end">
+				<span id="top-btn">ページトップへ戻る</span>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+  $(function(){
+  	 $('#flipbook').turn({
+  		elevation: 50,
+  		gradients: true,
+ 		autoCenter: false,
+ 		direction: 'rtl'
+  	 });
+  });
+</script>

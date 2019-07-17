@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container-fluid">
 	<div id="roop">
 		<div class="row">
-			<div class="col-6 offset-3">
+			<div class="col-lg-6 offset-lg-3 col-sm-12 col-xs-12">
 				<div class="d-flex justify-content-center">
 					<div class="text">
 						<h3 class="about-text-title">
@@ -9,7 +9,7 @@
 						</h3>
 						<p class="about-text-main">
 							liefeは皆さんが考えた短編小説を投稿、閲覧することができる<br>
-							短編小説投稿、閲覧専用アプリケーションです。<br>
+							1200字以内の短編小説投稿、閲覧専用アプリケーションです。<br>
 							皆様のlifeの中にちょっとしたlieを取り入れて<br>
 							皆様が笑顔を与えたり受け取ったりしていただければと思います<br>
 						</p>
@@ -18,7 +18,7 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-5 offset-1">
+			<div class="col-lg-5 offset-lg-1 col-sm-12 col-xs-12">
 				<div class="d-flex justify-content-center">
 					<div class="text">
 						<h3 class="about-text-title">
@@ -26,12 +26,12 @@
 						</h3>
 						<p class="about-text-login">
 							このアプリはログインをしなくても、投稿されている小説を読むことができます。どうぞゆっくりお楽しみくださいませ。
-							<%= link_to "小説一覧画面へ", stories_path, class: "btn btn-header" %>
+							<%= link_to "小説一覧画面へ", stories_path, class: "btn btn-about" %>
 						</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-5">
+			<div class="col-lg-5 col-sm-12 col-xs-12">
 				<div class="d-flex justify-content-center">
 					<div class="text">
 						<h3 class="about-text-title">
@@ -43,11 +43,61 @@
 							またログインすると投稿されている小説をお気に入りすることができるようになり、
 							あなたのお気に入り小説を一覧で表示してくれたりと、
 							よりいっそうliefeを楽しめる工夫がされております。
-							<%= link_to "会員登録画面へ（会員登録は無料です)",new_user_registration_path, class: "btn btn-header" %>
+							<%= link_to "会員登録画面へ
+							",new_user_registration_path, class: "btn btn-about" %>
 						</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div class="row" style="margin-top: 50px;">
+		<div class="col-12">
+			<div class="d-flex justify-content-center">
+        		<h2>FAQ</h2>
+    		</div>
+    	</div>
+    </div>
+    <div class="faq">
+        <ul id="faq-list">
+            <li class="faq-list-item">
+             	<h3 class="question">liefeの利用にはお金がかかりますか？</h3>
+            	<span>+</span>
+            	<div class="answer">
+              	<p>liefeでは現在すべてのサービスを無料でご提供させていただいております。</p>
+            	</div>
+          	</li>
+          	<li class="faq-list-item">
+            	<h3 class="question">投稿の仕方がわかりません。</h3>
+            	<span>+</span>
+            	<div class="answer">
+              	<p>小説を投稿するには会員登録が必要です。会員登録をすると「投稿する」という文字が現れます。
+              	クリックしていただくと入力フォームに移送しますので、そこに小説を書いていただき「投稿する」というボタンを押すと投稿されます。</p>
+           		</div>
+         	 </li>
+          	<li class="faq-list-item">
+           		 <h3 class="question">短編小説と書いてありますが、投稿する小説に文字数制限などはありますか？</h3>
+           		 <span>+</span>
+            	 <div class="answer">
+              	 <p>liefeでは1200文字以下の短編小説しか投稿することができない仕組みになっております。</p>
+             	 </div>
+            </li>
+          	<li class="faq-list-item">
+            	<h3 class="question">投稿するときに作品名を間違えてしまいました。どうすればいいですか？</h3>
+            	<span>+</span>
+            	<div class="answer">
+              	<p>liefeでは自分が投稿した小説は編集ができるような仕組みになっております。
+              	自分が投稿した小説の編集画面に進んでいただくと作品名、ジャンル、小説本文を編集することができますので、そちらの機能をご利用ください。</p>
+           		</div>
+         	 </li>
+         	 <li class="faq-list-item">
+           		 <h3 class="question">小説以外は投稿できないですか？</h3>
+           		 <span>+</span>
+            	 <div class="answer">
+              	 <p>liefeでは小説以外にもご自身が持っている資格の勉強法や、日記などを投稿することができます。
+              	 ただし文字数は小説と同じ1200字以内ですのでそこはご注意ください</p>
+             	 </div>
+            </li>
+        </ul>
+    </div>
 </div>

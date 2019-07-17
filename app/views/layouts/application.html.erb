@@ -4,52 +4,76 @@
     <title>Liefe</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <!-- font-awesome導入 -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" >
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
-  <!--header部分 -->
-  <body>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <!-- drawer.jsの導入 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/css/drawer.min.css">
 
-  <div class="container">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-sky">
-        <div class="navbar-brand collapse navbar-collapse justify-content-start">
-            <h1>liefe</h1>
-        </div>
-        <div class="collapse navbar-collapse justify-content-end">
-          <ul class="navbar-nav">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/iScroll/5.2.0/iscroll.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/drawer/3.2.2/js/drawer.min.js"></script>
+
+  </head>
+  <body>
+  <!--header部分 -->
+    <header class="drawer drawer--right">
+      <div class="container-fluid">
+        <%= image_tag '/images/rogo.jpg' %>
+        <button type="button" class="drawer-toggle drawer-hamburger" >
+          <span class="sr-only">toggle navigation</span>
+          <span class="drawer-hamburger-icon"></span>
+        </button>
+        <nav class="drawer-nav" style="background-color: rgba(0,0,0,0.5)">
+          <ul class="drawer-manu">
+            <!--ユーザーがサインインしているかで条件分岐 -->
             <% if user_signed_in? %>
+              <!-- サインインしているユーザーが管理者かで条件分岐 -->
               <% if current_user.admin_flag == 1  %>
                 <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-header" %>
                 <%= link_to "ユーザー一覧", users_path, class: "btn btn-header" %>
                 <%= link_to "投稿する", new_story_path, class: "btn btn-header" %>
                 <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
                 <%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "btn btn-header" %>
+              <!-- 管理者じゃない場合 -->
               <% else %>
                 <%= link_to "マイページ", user_path(current_user.id), class: "btn btn-header" %>
                 <%= link_to "投稿する", new_story_path, class: "btn btn-header" %>
                 <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
                 <%= link_to "ログアウト",destroy_user_session_path, method: :delete, class: "btn btn-header" %>
               <% end %>
+            <!-- サインインしていない場合 -->
             <% else %>
                 <%= link_to "トップページ",root_path, class: "btn btn-header"  %>
-                <%= link_to "liefeとは",about_path, class: "btn btn-header" %>
+                <%= link_to "初めての方へ",about_path, class: "btn btn-header" %>
                 <%= link_to "小説一覧", stories_path, class: "btn btn-header" %>
                 <%= link_to "会員登録",new_user_registration_path, class: "btn btn-header" %>
                 <%= link_to "ログイン",new_user_session_path, class: "btn btn-header" %>
             <% end %>
           </ul>
-        </div>
-    </nav>
-  </div>
-      <%= yield %>
-  </body>
-  <footer class="container">
-    <nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-sky">
-      <div class="collapse navbar-collapse justify-content-end">
-        <h1>liefe</h1>
+        </nav>
       </div>
-    </nav>
-  </footer>
+    </header>
+        <%= yield %>
+
+  </body>
+    <!-- footer部分 -->
+    <footer>
+      <div id = "footer-character">
+        <span class="a">小</span>
+        <span class="b">説</span>
+        <span class="c">の</span>
+        <span class="d">世</span>
+        <span class="e">界</span>
+        <span class="f">へ</span>
+        <span class="g">よ</span>
+        <span class="h">う</span>
+        <span class="i">こ</span>
+        <span class="j">そ</span>
+      </div>
+      <div class="rogo">
+        <%= image_tag '/images/rogo.jpg' %>
+      </div>
+    </footer>
 </html>

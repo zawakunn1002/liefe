@@ -1,24 +1,35 @@
 class UsersController < ApplicationController
 
+  #1ページあたりに表示する小説の数指定
   PER = 3
+
+  before_action :authenticate_user!, only: [:index, :edit]
 
 
   def index
+    #kaminariのページネーション
     @users = User.page(params[:page]).per(PER)
+    # 検索オブジェクト
+    @search = @users.ransack(params[:q])
+    # 検索結果
+    @result = @search.result
     @user = current_user
-    if @user.admin_flag != 1
-      redirect_to stories_path
+    if current_user.admin_flag != 1
+       redirect_to stories_path
     end
 
   end
 
   def show
   	@user =User.find(params[:id])
-    @stories = Story.where(user_id: @user.id)
+    #投稿小説を新しい順番に並び替えるため(.order(:id).reverse_order)
+    @stories = @user.stories.page(params[:page]).reverse_order.per(3)
+    #お気に入りした小説を新しい順番に並び替えるため。(.order(:id).reverse_order)
+    @favorites = @user.favorites.page(params[:page]).reverse_order.per(3)
   end
 
   def edit
-    @user = current_user
+    @user = User.find(params[:id])
     if current_user.id != @user.id
       redirect_to stories_path
     end
@@ -37,11 +48,16 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to stories_path
+    redirect_to users_path
 
   end
 
   def user_params
-    params.require(:user).permit(:id, :name, :profile_image, story_attributes:[:title])
+    params.require(:user).permit(:id, :email, :name, :url, :profile_image, story_attributes:[:title])
   end
+
+  def search_params
+      params.require(:q).permit!
+  end
+
 end

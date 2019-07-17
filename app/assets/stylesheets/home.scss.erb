@@ -2,64 +2,84 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.shutter{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  bottom:0;
+  background:linear-gradient(to right, #7f7fd5, #86a8e7, #91eae4);
+  z-index:9999;
+  -webkit-animation: byeShutter 2.6s forwards;
+          animation: byeShutter 2.6s forwards;
+}
+@keyframes byeShutter {
+  70% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+    z-index: -1;
+  }
+}
 
-
-#roop {
+.shutter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: white;
+  width: 0;
+  height: 10px;
+  -webkit-animation: shutterOpen 2.6s forwards;
+          animation: shutterOpen 2.6s forwards;
+}
+@keyframes shutterOpen {
+  0% {
+    width: 0;
+    height: 1px;
+  }
+  50% {
     width: 100%;
-    background: image-url('photo12.jpg') repeat-x;
-    background-position: 0 0;
-    -webkit-animation: bgroop 30s linear infinite;
-    animation: bgroop 40s linear infinite;
-}
-@-webkit-keyframes bgroop {
-    from {
-        background-position: 0  0;
-    }
-    to {
-        background-position: -1478px 0;
-    }
-}
-@keyframes bgroop {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: -1478px 0;
-    }
+    height: 1px;
+  }
+  90% {
+    width: 100%;
+    height: 100%;
+  }
+  100% {
+    width: 100%;
+    height: 100%;
+  }
 }
 
-.text {
-  background-color:rgba(255,255,255,0.7) ;
-  margin: 20px 0 20px 0;
-  border-radius: 20px;
-
+.content {
+  -webkit-animation: contentScale 2.6s forwards;
+          animation: contentScale 2.6s forwards;
 }
-
-.about-text-title {
-    text-align: center;
-    padding-top: 10px;
+@keyframes contentScale {
+  70% {
+    -webkit-transform: perspective(800px) scale(0.9) rotateX(15deg);
+            transform: perspective(800px) scale(0.9) rotateX(15deg);
+  }
+  100% {
+    -webkit-transform: perspective(800px) scale(1) rotateX(0);
+            transform: perspective(800px) scale(1) rotateX(0);
+  }
 }
-
-.about-text-main {
-    -ms-writing-mode: tb-rl;
-    padding: 20px 30px;
-
-}
-
-.about-text-login {
-  -ms-writing-mode: tb-rl;
-  padding: 20px 10px;
-}
-
 .top-image {
     width: 100%;
-    background: image-url('top.jpg');
+    height: 100vh;
+    background: image-url("/images/top.jpg");
 }
 
 .top {
     background-color:rgba(255,255,255,0.8);
     border-radius: 20px;
-    margin: 100px 20px 100px 0;
+    margin: 140px 20px 100px 0;
     width: 445px;
     height: 300px;
 }
@@ -89,32 +109,257 @@
   transform: rotate(10deg);
 }
 
+#roop {
+    width: 100%;
+    background: image-url("/images/photo12.jpg") repeat-x;
+    background-position: 0 0;
+    -webkit-animation: bgroop 30s linear infinite;
+    animation: bgroop 40s linear infinite;
+}
+@-webkit-keyframes bgroop {
+    from {
+        background-position: 0  0;
+    }
+    to {
+        background-position: -1478px 0;
+    }
+}
+@keyframes bgroop {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -1478px 0;
+    }
+}
+
+.text {
+  background-color:rgba(255,255,255,0.7) ;
+  margin: 20px 0 20px 0;
+  border-radius: 20px;
+  text-align: center;
+
+}
+
+.about-text-title {
+    text-align: center;
+    padding-top: 10px;
+}
+
+.about-text-main {
+    -ms-writing-mode: tb-rl;
+    padding: 20px 30px;
+
+}
+
+.about-text-login {
+  -ms-writing-mode: tb-rl;
+  padding: 20px 10px;
+}
+
+.faq {
+  margin-bottom: 80px;
+}
+
+#faq-list {
+  width: 500px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+/*アコーディオン追加 */
+.faq-list-item {
+  margin:10px;
+  border-bottom:1px solid #ccc;
+  position:relative;
+  cursor:pointer;
+  text-align: left;
+}
+
+.faq-list-item h3 {
+  font-size: 14px;
+}
+
+.faq-list-item span {
+  position:absolute;
+  top:0;
+  right:5px;
+  color:#ccc;
+  font-size:13px;
+}
+
+.answer {
+  font-size: 12px;
+  display: none;
+  padding: 5px 0px;
+  margin-bottom: 15px;
+}
+
+
+
 .sign-up-image {
-  background: image-url('sign-up.jpg');
+  background: image-url("/images/sign-up.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 540px;
+  height: 100vh;
 }
 
 .sign-up-back {
-  margin-top: 80px;
+  margin: 80px auto;
   padding: 30px;
   border-radius: 20px;
   background-color: rgba(255,255,255,0.8);
 }
 
 .log-in-image {
-  background: image-url('log-in.jpg');
+  background: image-url("/images/log-in.jpg");
   background-size: cover;
   background-position: center;
   width: 100%;
-  height: 540px;
+  height: 100vh;
 }
 
 .log-in-back {
-  margin-top: 85px;
-  padding: 30px;
+  margin: 160px auto 0 auto;
+  padding: 50px;
   border-radius: 20px;
   background-color: rgba(255,255,255,0.7);
+}
+
+@media screen and (max-width:1024px) {
+  .top-image {
+    background-size: cover;
+  }
+  .top {
+    margin: 200px 20px 100px 0;
+  }
+
+  .sign-up-back {
+    margin: 150px auto 0 auto;
+
+  }
+
+}
+
+@media screen and (max-width: 820px) {
+  .top {
+    margin: 35px 20px 0 0;
+  }
+  .text {
+    width: 80%;
+  }
+
+  .sign-up-image {
+    height: 700px;
+  }
+
+  .sign-up-back {
+    margin: 70px auto 0 auto;
+  }
+
+  .log-in-back {
+    margin: 20px auto 0 auto;
+    padding: 30px;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .top {
+    margin: 250px 20px 100px 0;
+  }
+
+  .sign-up-image {
+    height: 100vh;
+  }
+
+  .sign-up-back {
+    margin: 150px auto;
+    padding: 30px;
+  }
+
+  .log-in-back {
+    margin: 200px auto 0 auto;
+  }
+}
+@media screen and (max-width:736px) {
+  .top {
+    margin: 40px 20px 0 0;
+  }
+
+  .sign-up-image {
+    height: 700px;
+  }
+
+  .sign-up-back {
+    margin: 30px auto;
+  }
+
+  .log-in-back {
+    margin: 20px auto 0 auto;
+  }
+
+}
+
+@media screen and (max-width:588px) {
+  .top {
+    background-color: rgba(0,0,0,0);
+    display: block;
+    margin: 15px 20px 0 0;
+  }
+
+  .top-title {
+    display: none;
+  }
+
+  a.btn-circle-fishy{
+  display: block;
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  margin: 5px;
+}
+
+.sign-up-image {
+  height: 750px;
+}
+
+.sign-up-back {
+    margin: 20px auto;
+  }
+
+.log-in-image {
+  height: 400px;
+}
+
+}
+
+@media screen and (max-width:425px) {
+
+.top {
+  margin: 150px 50px 0 20px;
+  background-color: rgba(0,0,0,0);
+
+}
+.faq {
+  margin: 0 auto 80px auto;
+}
+
+#faq-list {
+  width: 90%;
+}
+
+.sign-up-image{
+  height: 750px;
+}
+
+.log-in-image {
+  height: 100vh;
+}
+
+.log-in-back {
+  margin-top: 150px;
+}
+
 }
