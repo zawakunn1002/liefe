@@ -27,6 +27,14 @@
 				</table>
 			</div>
 		</div>
+		<% if @user.url.blank? %>
+		<% else %>
+		<div class="col-lg-6 offset-lg-6 col-xs-12">
+			<div class="d-flex justify-content-center">
+				<a href="<%= @user.url %>" target="_blank"><%= @user.name %>のその他URL</a>
+			</div>
+		</div>
+		<% end %>
 		<div class="col-lg-6 offset-lg-6 col-xs-12">
 			<div class="d-flex justify-content-center">
 				<table style="margin-top: 30px;">

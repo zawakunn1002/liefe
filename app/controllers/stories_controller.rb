@@ -40,8 +40,9 @@ class StoriesController < ApplicationController
 	def show
 		@story = Story.find(params[:id])
 		@story_comment = StoryComment.new
-		#本の１ページに200文字しか入らないような処理。
-		@contents = @story.short_story.each_char.each_slice(210).map(&:join)
+		#25文字ずつで区切り、11行埋めたら次のページを生成
+		@contents = @story.short_story.scan(/.{1,25}/).each_slice(11).map(&:join)
+		#@contents = @story.short_story.each_char.each_slice(210).map(&:join)
 		@user = current_user
 	end
 

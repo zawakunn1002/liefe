@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:id, :email, :name, :profile_image, story_attributes:[:title])
+    params.require(:user).permit(:id, :email, :name, :url, :profile_image, story_attributes:[:title])
   end
 
   def search_params
