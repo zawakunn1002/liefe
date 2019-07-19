@@ -22,7 +22,7 @@ end
 
 #ルーティング一覧
 =begin
-new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
+         new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
              user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
      destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
         new_user_password GET    /users/password/new(.:format)                                                            devise/passwords#new

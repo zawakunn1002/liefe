@@ -3,7 +3,7 @@ class Story < ApplicationRecord
 	has_many :favorites, dependent: :destroy
 	has_many :story_comments, dependent: :destroy
 
-	validates :short_story, presence: true, length: { maximum: 1290 }
+	validates :short_story, presence: true, length: { maximum: 1275 }
 	validates :title, presence: true, length: { maximum: 50 }
 	validates :category, presence: true
 
