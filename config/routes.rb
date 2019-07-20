@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   	resource :story_comments, only: [:create, :destroy]
   end
 
+  post '/stories/ajax_story', to: 'stories#ajax_story', as: 'ajax_story'
 end
 
 #ルーティング一覧
