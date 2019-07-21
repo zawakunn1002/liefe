@@ -18,11 +18,12 @@ Rails.application.routes.draw do
   	resource :story_comments, only: [:create, :destroy]
   end
 
-  post '/stories/ajax_story', to: 'stories#ajax_story', as: 'ajax_story'
+  post '/stories/ajax_story' => 'stories#ajax_story', as: 'ajax_story'
 end
 
 #ルーティング一覧
 =begin
+ Prefix Verb   URI Pattern                                                                              Controller#Action
          new_user_session GET    /users/sign_in(.:format)                                                                 devise/sessions#new
              user_session POST   /users/sign_in(.:format)                                                                 devise/sessions#create
      destroy_user_session DELETE /users/sign_out(.:format)                                                                devise/sessions#destroy
@@ -58,6 +59,13 @@ end
                           PATCH  /stories/:id(.:format)                                                                   stories#update
                           PUT    /stories/:id(.:format)                                                                   stories#update
                           DELETE /stories/:id(.:format)                                                                   stories#destroy
+               ajax_story POST   /stories/ajax_story(.:format)                                                            stories#ajax_story
+               refile_app        /attachments                                                                             #<Refile::App app_file="/home/vagrant/.bundle/ruby/2.5.0/refile-46b4178654e6/lib/refile/app.rb">
+       rails_service_blob GET    /rails/active_storage/blobs/:signed_id/*filename(.:format)                               active_storage/blobs#show
+rails_blob_representation GET    /rails/active_storage/representations/:signed_blob_id/:variation_key/*filename(.:format) active_storage/representations#show
+       rails_disk_service GET    /rails/active_storage/disk/:encoded_key/*filename(.:format)                              active_storage/disk#show
+update_rails_disk_service PUT    /rails/active_storage/disk/:encoded_token(.:format)                                      active_storage/disk#update
+     rails_direct_uploads POST   /rails/active_storage/direct_uploads(.:format)                                           active_storage/direct_uploads#create
 =end
 
 

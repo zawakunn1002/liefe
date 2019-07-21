@@ -1,4 +1,4 @@
- $(function(){
+$(function(){
     window.addEventListener("DOMContentLoaded", function(){
            var count = null,
                lest = null,
@@ -18,4 +18,4 @@
                    attention.style.display = ( length > max ) ? "block" : "none";
            }
     }, false);
- });
+});
