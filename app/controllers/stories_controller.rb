@@ -75,6 +75,10 @@ class StoriesController < ApplicationController
 
 	end
 
+	def ajax_story
+  		render json: @story
+	end
+
 	private
 
   	def story_params

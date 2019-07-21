@@ -21,7 +21,7 @@ FactoryBot.define do
     	end
 
     	trait :too_long_short_story do
-      	  short_story { Faker::Lorem.characters(1201) }
+      	  short_story { Faker::Lorem.characters(1276) }
    		end
 
 
