@@ -15,7 +15,7 @@
 					<h4>
 						<% if @story.errors.any? %>
 							<p style="color: red;">
-							 投稿できませんでした。文字数がオーバーしていないか、タイトルの書き忘れがないか、ジャンルの選択忘れがないか確認してみてください。
+							 投稿できませんでした。文字数がオーバーしていないか、タイトルの書き忘れがないか、ジャンルの選択忘れがないか確認してみてください。(ページを離れる場合は「本文を下書きとして一時保存する」を押してください)
 							 </p>
 						<% end %>
 					</h4>
@@ -25,7 +25,7 @@
 		<div class="row">
 			<div class="col-lg-10 offset-lg-1 col-xs-12">
 				<div class="d-flex justify-content-center">
-					<%= form_for (@story) do |f| %>
+					<%= form_for @story do |f| %>
   						<div class="story_form">
    				 			<div class="form-group">
    				 			<!-- タイトルの入力フォーム -->
@@ -55,7 +55,9 @@
     							<!-- 小説本文の入力フォーム -->
       							<%= f.label :本文 %><br>
       							<!-- 一時保存できるようなボタン(クッキーに保存されます) -->
-                    			<a href="#" id="ajax_story">本文を一時保存する</a>
+                    			<a href="#" id="ajax_story">本文を下書きとして一時保存する</a><br>
+                    			<!-- 一時保存した内容を消すボタン -->
+                    			<a href="#" id="delete_ajax_story">下書きを削除する</a>
       							<%= f.text_area :short_story, class: "form-control", id:"new-textArea",cols: 110, rows: 15 %>
       							<p>
   									<span id="textCount">0</span>文字入力しました。<br>
@@ -82,17 +84,21 @@
 										 投稿できない仕組みになっております。ご注意くださいませ
 									</p>
 									<p class="Notes">
-										３、表紙画像、裏表紙画像の選択は必須ではありません。
-						 			 選択しない場合は背景が白色になります。
+						 			 ３、本文は1分ごとに下書きとして自動的に保存されます。本文の内容をすべて消したい場合は「下書きを削除する」という文字を押してページを読み込みなおしてください。
 				    				</p>
-				    				<p class="Notes">４、画像はサイズによってうまく表示ができない場合があります。
-					  				また表紙にタイトル、作者名を載せさせていただく関係で、
-					  				画像に半透明の白色をかけさせていただいております。ご了承くださいませ。
+				    				<p class="Notes">
+					  					４、間違えて「下書きを削除する」を押してしまった場合は、ページを読み込まずに「本文を下書きとして一時保存をする」を押してください
+									</p>
+									<p class="Notes">
+										５、表紙画像、裏表紙画像の選択は必須ではありません。選択しない場合は背景が白色になります。
+									</p>
+									<p class="Notes">
+										６、画像はサイズによってうまく表示ができない場合があります。また表紙にタイトル、作者名を載せさせていただく関係で、画像に半透明の白色をかけさせていただいております。ご了承くださいませ。
 									</p>
 								</div>
 							</div>
     						<div class="form-submit" style="margin-bottom: 20px;">
-      						<%= f.submit "投稿する", class: "form-button" %>
+      						<%= f.submit "投稿する", class: "form-button", id:"new-botton" %>
     						</div>
   						</div>
 					<% end %>
