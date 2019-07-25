@@ -9,7 +9,7 @@
 	</div>
 	<div class="row" style="margin: 20px 0 30px 0;">
 		<div class="col-10 offset-1">
-			<!-- pc時に呼び出される -->
+			<!-- 画面幅が821px以上の場合呼び出される -->
 			<div id="flipbook">
 				<!-- top-box1は白い背景 -->
 	  			<div class="top-box1">
@@ -37,7 +37,7 @@
 	  				</div>
 	  			</div>
 	  		</div>
-	  		<!-- レスポンシブ時に呼び出される -->
+	  		<!-- 画面幅が820px以下の場合に呼び出される -->
 	  		<div id ="responsive-book">
 	  			<div id ="responsive-book2">
 	  			<h6 class="responsive-title">
@@ -70,6 +70,7 @@
 		    <!--　投稿日の年、月、日で表示 -->
 		    <p>投稿日：<%= @story.created_at.strftime("%Y") %>年<%= @story.created_at.strftime("%m") %>月<%= @story.created_at.strftime("%d") %>日</p>
 		    <p>音量に注意してください</p>
+		    <!-- 音源の再生のため -->
 		    <p>current_user</p>
 		    <div><%= audio_tag("/audios/sound1.mp3", :autoplay => false, :controls => true, :loop => true) %>
 		 	</div>
@@ -144,6 +145,7 @@
 		</div>
 	</div>
 </div>
+<!-- turn.jsの使用のため -->
 <script>
   $(function(){
   	 $('#flipbook').turn({

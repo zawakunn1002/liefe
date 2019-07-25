@@ -11,6 +11,6 @@ class User < ApplicationRecord
 
   attachment :profile_image
 
-  validates :name, length: { in: 2..20 }
+  validates :name, presence: true, length: { in: 2..20 }
   validates :email, presence: true
 end

@@ -27,7 +27,10 @@
 				</table>
 			</div>
 		</div>
+		<!-- もしユーザーがurlを登録してなかったら -->
 		<% if @user.url.blank? %>
+		<!-- 何も表示しない -->
+		<!--登録していたら下記を表示 -->
 		<% else %>
 		<div class="col-lg-6 offset-lg-6 col-xs-12">
 			<div class="d-flex justify-content-center">
@@ -71,9 +74,12 @@
 	<div class="row">
 		<div class="col-lg-10 offset-lg-1 col-xs-12">
 			<div class="d-flex justify-content-center">
+				<!-- 投稿小説がなかった場合呼び出される -->
 				<% if @stories.blank? %>
 					<p><%= @user.name %>さんの投稿小説がありません<br>
+						<!-- ユーザーがサインインしてイいたら -->
 						 <% if user_signed_in? %>
+						    <!-- サインインしているユーザーがcurrent_userなら -->
 							<% if @user.id == current_user.id %>
 								あなたも小説を投稿してみませんか<br>
 									<%= link_to "小説投稿画面へ", new_story_path, class: "btn btn-info" %>
@@ -84,6 +90,7 @@
 						<thead>
 							<th>作品名</th>
 							<th>ジャンル</th>
+							<th>お気に入り数</th>
 							<th></th>
 							<th></th>
 						</thead>
@@ -92,6 +99,11 @@
 								<tr>
 									<td><%= link_to story.title,story_path(story.id) %></td>
 									<td><%= story.category %></td>
+									<% if story.favorites_count == nil %>
+									<td style="text-align: center">0</td>
+									<% else %>
+									<td style="text-align: center;"><%= story.favorites_count %></td>
+									<% end %>
 										<!--ユーザーがサインインしていたら -->
 										<% if user_signed_in? %>
 											<!-- サインインしているユーザーがcurrent_userだったら -->

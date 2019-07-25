@@ -1,3 +1,4 @@
+<!-- このページは管理者しか見れません -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-10 offset-lg-1 col-xs-12">
@@ -32,7 +33,7 @@
 						<th> ペンネーム</th>
 						<th></th>
 					</thead>
-				<tbody>
+				    <tbody>
 					<% @result.each do |user| %>
 						<tr>
 						<td
@@ -41,7 +42,7 @@
 						<td><%= link_to "ユーザー削除", user_path(user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
 					    </tr>
 					<% end %>
-				</tbody>
+				    </tbody>
 				</table>
 		    </div>
 		</div>

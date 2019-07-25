@@ -15,13 +15,12 @@ class StoriesController < ApplicationController
 		@story.user_id = current_user.id
 		@user = current_user
 		if @story.save
-		   flash[:notice] = "小説を新規投稿しました"
-		   redirect_to user_path(current_user.id)
+			flash[:notice] = "小説を新規投稿しました"
+			redirect_to user_path(current_user)
 		else
 		   render "new"
 
 		end
-
 	end
 
 
