@@ -100,9 +100,9 @@
 									<td><%= link_to story.title,story_path(story.id) %></td>
 									<td><%= story.category %></td>
 									<% if story.favorites_count == nil %>
-									<td style="text-align: center">0</td>
+									<td>0</td>
 									<% else %>
-									<td style="text-align: center;"><%= story.favorites_count %></td>
+									<td><%= story.favorites_count %></td>
 									<% end %>
 										<!--ユーザーがサインインしていたら -->
 										<% if user_signed_in? %>
