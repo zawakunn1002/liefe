@@ -1,18 +1,18 @@
 class UsersController < ApplicationController
 
-  #1ページあたりに表示する小説の数指定
-  PER = 3
 
   before_action :authenticate_user!, only: [:index, :edit]
 
 
   def index
     #kaminariのページネーション
-    @users = User.page(params[:page]).per(PER)
+    @users = User.page(params[:page]).per(5)
     # 検索オブジェクト
     @search = @users.ransack(params[:q])
     # 検索結果
     @result = @search.result
+
+    @users_result = @result.page(params[:page]).per(5)
     @user = current_user
     if current_user.admin_flag != 1
        redirect_to stories_path

@@ -2,9 +2,6 @@ class StoriesController < ApplicationController
 
 	before_action :authenticate_user!, only: [:new,:edit]
 
-	#kaminariにて一ページに何件表示するか決める
-	PER = 3
-
 	def new
 		@story = Story.new
 
@@ -26,13 +23,15 @@ class StoriesController < ApplicationController
 
 	def index
 		#kaminariの書き方＋投稿を新しい順に並べるため
-		@stories = Story.page(params[:page]).per(PER).order(:id).reverse_order
+		@stories = Story.page(params[:page]).reverse_order.per(3)
 		# 検索オブジェクト
     	@search = @stories.ransack(params[:q])
     	# 検索結果
     	@result = @search.result
     	# お気に入り小説
     	@all_ranks = Story.find(Favorite.group(:story_id).order('count(story_id) desc').limit(3).pluck(:story_id))
+
+    	@story = @result.page(params[:page]).reverse_order.per(3)
 
 	end
 
@@ -43,6 +42,7 @@ class StoriesController < ApplicationController
 		@contents = @story.short_story.scan(/.{1,25}/).each_slice(11).map(&:join)
 		#@contents = @story.short_story.each_char.each_slice(210).map(&:join)
 		@user = current_user
+		@comments = @story.story_comments.page(params[:page]).reverse_order.per(1)
 	end
 
 	def edit
