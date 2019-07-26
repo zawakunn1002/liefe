@@ -22,10 +22,10 @@ class UsersController < ApplicationController
 
   def show
   	@user =User.find(params[:id])
-    #投稿小説を新しい順番に並び替えるため(.order(:id).reverse_order)
-    @stories = @user.stories.page(params[:page]).reverse_order.per(3)
-    #お気に入りした小説を新しい順番に並び替えるため。(.order(:id).reverse_order)
-    @favorites = @user.favorites.page(params[:page]).reverse_order.per(3)
+    #投稿小説を新しい順番に並び替えるため(.reverse_order)
+    @stories = @user.stories.page(params[:stories_page]).reverse_order.per(3)
+    #お気に入りした小説を新しい順番に並び替えるため。(.reverse_order)
+    @favorites = @user.favorites.page(params[:favorites_page]).reverse_order.per(3)
   end
 
   def edit
