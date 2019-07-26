@@ -110,7 +110,7 @@
     <div class="col-lg-3 offset-lg-9">
       <div class="d-flex justify-content-end">
         <!-- kaminariのページネーション表示 -->
-        <%= paginate @stories %>
+        <%= paginate @stories, :window => 2 %>
       </div>
     </div>
   </div>
