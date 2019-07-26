@@ -78,8 +78,15 @@
         </table>
       </div>
     </div>
-		<div class="col-lg-9 col-xs-12">
-			<div class="d-flex justify-content-center">
+    <% if @result.blank? %>
+        <div class="col-lg-6 col-12">
+          <div class="d-flex justify-content-center">
+            <h4>お探しの小説は現在存在いたしません</h4>
+          </div>
+        </div>
+    <% else %>
+  		<div class="col-lg-9 col-xs-12">
+  			<div class="d-flex justify-content-center">
 					<table class="table table-hover table-inverse">
           	<thead>
           		<tr>
@@ -103,14 +110,15 @@
         		<% end %>
         		</tbody>
      			</table>
-			</div>
+  			</div>
+      <% end %>
 		</div>
   </div>
   <div class="row">
     <div class="col-lg-3 offset-lg-9">
       <div class="d-flex justify-content-end">
         <!-- kaminariのページネーション表示 -->
-        <%= paginate @stories, :window => 2 %>
+        <%= paginate @story, :window => 2 %>
       </div>
     </div>
   </div>
