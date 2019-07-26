@@ -127,38 +127,40 @@
 		</div>
 	</div>
 	<!-- 管理者は他人のコメントを消すことができるようにするため -->
-	<% if current_user.admin_flag == 1 %>
-		<div class="row">
-			<div class="col-12">
-				<p>管理者用コメント欄</p>
-				<% if @story.story_comments.count == 0 %>
-				<% else %>
-				<table border="1" style="width:100%;">
-					<colgroup span="1" style="width:25%;">
-					<colgroup span="1" style="width:67%;">
-					<colgroup span="1" style="width:8%;">
-					<thead style="width:30%;">
-						<tr>
-						    <th>ニックネーム</th>
-							<th>コメント</th>
-							<th></th>
-						</tr>
-					</thead>
-					<tbody>
-						<% @comments.each do |story_comment| %>
+	<% if user_signed_in? %>
+		<% if current_user.admin_flag == 1 %>
+			<div class="row">
+				<div class="col-12">
+					<p>管理者用コメント欄</p>
+					<% if @story.story_comments.count == 0 %>
+					<% else %>
+					<table border="1" style="width:100%;">
+						<colgroup span="1" style="width:25%;">
+						<colgroup span="1" style="width:67%;">
+						<colgroup span="1" style="width:8%;">
+						<thead style="width:30%;">
 							<tr>
-								<td><%= story_comment.user.name %></td>
-								<td><%= story_comment.comment %></td>
-								<td><%= link_to "コメントを削除", story_story_comments_path(story_comment.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
-								</td>
+							    <th>ニックネーム</th>
+								<th>コメント</th>
+								<th></th>
 							</tr>
-						<% end %>
-					</tbody>
-				</table>
-				<%= paginate @comments, :window => 2 %>
-				<% end %>
-			</div>
-	    </div>
+						</thead>
+						<tbody>
+							<% @comments.each do |story_comment| %>
+								<tr>
+									<td><%= story_comment.user.name %></td>
+									<td><%= story_comment.comment %></td>
+									<td><%= link_to "コメントを削除", story_story_comments_path(story_comment.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
+									</td>
+								</tr>
+							<% end %>
+						</tbody>
+					</table>
+					<%= paginate @comments, :window => 2 %>
+					<% end %>
+				</div>
+		    </div>
+		<% end %>
 	<% end %>
 	<!-- ユーザーがサインインしているかで条件分岐 -->
 	<% if user_signed_in? %>
