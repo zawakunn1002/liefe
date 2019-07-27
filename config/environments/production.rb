@@ -1,4 +1,6 @@
 Rails.application.configure do
+  require 'tlsmail'
+  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -103,11 +105,12 @@ Rails.application.configure do
 
   config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
-  port:                  465,
+  port:                  587,
   domain:               'gmail.com',
   user_name:            mail,
   password:             pass,
   authentication:       'plain',
-  ssl:                   true
+  tls:                   true,
+  enable_starttls_auto:  true
 }
 end
