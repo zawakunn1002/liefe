@@ -107,7 +107,8 @@ Rails.application.configure do
   domain:               'liefe.jp',
   user_name:            mail,
   password:             pass,
-  authentication:       'login',
+  authentication:       'plain',
+  ssl:                  true,
   enable_starttls_auto:  true
 }
 end
