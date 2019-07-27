@@ -1,6 +1,4 @@
 Rails.application.configure do
-  require 'tlsmail'
-  Net::SMTP.enable_tls(OpenSSL::SSL::VERIFY_NONE)
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
