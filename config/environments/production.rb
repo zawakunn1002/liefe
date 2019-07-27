@@ -109,6 +109,7 @@ Rails.application.configure do
   password:             pass,
   authentication:       'plain',
   enable_starttls_auto:  true,
+  ssl:                   true,
   openssl_verify_mode:   'none'
 }
 end
