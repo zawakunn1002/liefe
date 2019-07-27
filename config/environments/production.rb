@@ -104,12 +104,11 @@ Rails.application.configure do
   config.action_mailer.smtp_settings = {
   address:              'smtp.gmail.com',
   port:                  587,
-  domain:               'liefe.jp',
+  domain:               'gmail.com',
   user_name:            mail,
   password:             pass,
   authentication:       'plain',
-  ssl:                  true,
-  enable_starttls_auto:  false
+  enable_starttls_auto:  true,
   openssl_verify_mode:   'none'
 }
 end
