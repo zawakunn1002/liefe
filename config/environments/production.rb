@@ -108,8 +108,6 @@ Rails.application.configure do
   user_name:            mail,
   password:             pass,
   authentication:       'plain',
-  enable_starttls_auto:  true,
-  ssl:                   true,
-  openssl_verify_mode:   'none'
+  enable_starttls_auto:  true
 }
 end
