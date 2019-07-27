@@ -1,7 +1,5 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  require 'net/http'
-  http.ca_file = './cacert.pem'
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -109,8 +107,6 @@ Rails.application.configure do
   user_name:            mail,
   password:             pass,
   authentication:       'plain',
-  tls:                   true,
-  ssl:                   true,
   enable_starttls_auto:  true
 }
 end
