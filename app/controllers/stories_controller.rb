@@ -42,7 +42,7 @@ class StoriesController < ApplicationController
 		@contents = @story.short_story.scan(/.{1,25}/).each_slice(11).map(&:join)
 		#@contents = @story.short_story.each_char.each_slice(210).map(&:join)
 		@user = current_user
-		@comments = @story.story_comments.page(params[:page]).reverse_order.per(1)
+		@comments = @story.story_comments.page(params[:page]).reverse_order.per(5)
 	end
 
 	def edit
@@ -72,10 +72,6 @@ class StoriesController < ApplicationController
         @user = current_user
         redirect_to user_path(current_user.id)
 
-	end
-
-	def ajax_story
-  		render json: @story
 	end
 
 	private
