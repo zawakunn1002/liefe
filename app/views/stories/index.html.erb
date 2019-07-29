@@ -28,6 +28,11 @@
             <!-- 作品名の検索欄 -->
             <%= f.label :作品名検索欄 %><br>
             <%= f.text_field :title_cont, class: "form-control" %>
+
+            <!-- 作者名の検索欄 -->
+            <%= f.label :作者名検索 %><br>
+            <%= f.search_field :user_name_cont, class: "form-control" %>
+
             <div class="actions"><%= f.submit "検索" %></div>
           </div>
         <% end %>
