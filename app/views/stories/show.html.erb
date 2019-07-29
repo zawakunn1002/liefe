@@ -129,7 +129,7 @@
 			<%= paginate @comments, :window => 2 %>
 		</div>
 	</div>
-	<!-- 管理者は他人のコメントを消すことができるようにするため -->
+	<!-- 管理者は他人のコメントを消すことができるようにするため管理者のみ表示 -->
 	<% if user_signed_in? %>
 		<% if current_user.admin_flag == 1 %>
 			<div class="row">
