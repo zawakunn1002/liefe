@@ -49,12 +49,12 @@
 								<!-- マイページで表示しているユーザーがcurrent_userなら -->
 								<% if @user.id == current_user.id %>
 							        <td>
-									<%= link_to "プロフィール編集", edit_user_path(current_user.id), class: "btn btn-default" %></td>
+									<%= link_to "プロフィール編集画面へ", edit_user_path(current_user.id), class: "btn btn-primary" %></td>
 									<% end %>
 									<!--　current_userが管理者なら -->
 									<% if current_user.admin_flag == 1  %>
 									<td>
-									<%= link_to "ユーザー削除", user_path(@user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
+									<%= link_to "ユーザー削除", user_path(@user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-secondary" %></td>
 									<% end %>
 								<% end %>
 							</td>
@@ -82,7 +82,7 @@
 						    <!-- サインインしているユーザーがcurrent_userなら -->
 							<% if @user.id == current_user.id %>
 								あなたも小説を投稿してみませんか<br>
-									<%= link_to "小説投稿画面へ", new_story_path, class: "btn btn-info" %>
+									<%= link_to "小説投稿画面へ", new_story_path, class: "btn btn-primary" %>
 							<% end %>
 						<% end %>
 				<% else %>
@@ -108,8 +108,8 @@
 										<% if user_signed_in? %>
 											<!-- サインインしているユーザーがcurrent_userだったら -->
 											<% if @user.id == current_user.id %>
-												<td><%= link_to "編集", edit_story_path(story.id), class: "btn btn-default" %></td>
-												<td><%= link_to "削除",story_path(story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
+												<td><%= link_to "編集", edit_story_path(story.id), class: "btn btn-primary" %></td>
+												<td><%= link_to "削除",story_path(story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-secondary" %></td>
 											<% end %>
 										<% end %>
 							   	</tr>

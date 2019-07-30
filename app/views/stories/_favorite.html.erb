@@ -2,12 +2,14 @@
 <% if user_signed_in? %>
     <!-- ログインしているユーザーがお気に入りしたかどうかで分岐 -->
     <% if story.favorited_by?(current_user) %>
-        <p><span>お気に入り解除: </span><%=link_to story.favorites.count, story_favorites_path(story.id), method: :delete, remote: true %>
+        <p><%=link_to "この小説をお気に入りから解除する", story_favorites_path(story.id), method: :delete, remote: true, class: "btn btn-primary" %>
             <i class="fa fa-star" aria-hidden="true" style="color: rgb(255,255,0);"></i>
+            <p>お気に入り数：<%= story.favorites.count %></p>
         </p>
     <% else %>
-        <p><span>お気に入り登録: </span><%=link_to story.favorites.count, story_favorites_path(story.id), method: :post, remote: true%>
+        <p><%=link_to "この小説をお気に入りに登録する", story_favorites_path(story.id), method: :post, remote: true, class: "btn btn-primary" %>
         	<i class="fa fa-star-o" aria-hidden="true"></i>
+            <p>お気に入り数：<%= story.favorites.count %></p>
         </p>
     <% end %>
 <% else %>

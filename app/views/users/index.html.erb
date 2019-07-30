@@ -21,7 +21,7 @@
     </div>
     <div class="row">
     	<div class="col-6 offset-3">
-    		<%= link_to "ユーザー一覧を再度表示", users_path, class: "btn btn-info", style: "margin: 5px 0 20px 0;"%>
+    		<%= link_to "ユーザー一覧を再度表示", users_path, class: "btn btn-secondary", style: "margin: 5px 0 20px 0;"%>
     	</div>
     </div>
 	<div class="row">
@@ -39,7 +39,7 @@
 						<td
 						><%= attachment_image_tag user, :profile_image, :fill, 100, 100, fallback: '/images/no_image.jpg', class: "index-image" %></td>
 						<td><%= link_to user.name, user_path(user.id) %></td>
-						<td><%= link_to "ユーザー削除", user_path(user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %></td>
+						<td><%= link_to "ユーザー削除", user_path(user.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-secondary" %></td>
 					    </tr>
 					<% end %>
 				    </tbody>
