@@ -98,9 +98,14 @@
 			    </div>
 			</div>
 		</div>
-		<div class="row">
-			<div class="col-12">
-				<%= link_to "この小説を削除する", story_path(@story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-default" %>
+		<div class="row" style="margin: 20px 0;">
+			<div class="col-11 offset-1">
+				<%= link_to "小説本文のページへ戻る", story_path(@story.id), class: "btn btn-primary" %>
+			</div>
+		</div>
+		<div class="row" style="margin: 20px 0;">
+			<div class="col-11 offset-1">
+				<%= link_to "この小説を削除する", story_path(@story.id), method: :delete, data: {confirm: "本当に消しますか？"}, class: "btn btn-secondary" %>
 			</div>
 		</div>
 	</div>
