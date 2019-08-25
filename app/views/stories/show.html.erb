@@ -39,7 +39,6 @@
 	  		</div>
 	  		<!-- 画面幅が820px以下の場合に呼び出される -->
 	  		<div id ="responsive-book">
-	  			<div id ="responsive-book2">
 	  			<h6 class="responsive-title">
 	  				<%= @story.title %><br>
 	  			</h6>
@@ -47,7 +46,6 @@
 	  			<h6 class="responsive-name">
 	  				<%= link_to @story.user.name, user_path(@story.user.id), class: "auther-link" %>
 	  			</h6>
-	  			</div>
 	  		</div>
 		</div>
 	</div>
